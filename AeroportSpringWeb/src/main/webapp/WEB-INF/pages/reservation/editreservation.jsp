@@ -30,9 +30,36 @@
 				</div>
 				<div class="form-group">
 					<form:label path="numero">numero</form:label>
-					<form:input type="number" path="numero"
-						cssClass="form-control" />
+					<form:input type="number" path="numero" cssClass="form-control" />
 					<form:errors path="numero"></form:errors>
+				</div>
+				<div class="form-group">
+					<form:label path="vol">vol</form:label>
+					<form:select path="vol.id" cssClass="form-control">
+						<form:options items="${vols}" itemLabel="id" itemValue="id" />
+					</form:select>
+				</div>
+
+				<div class="form-group">
+					<label>client</label> <select class="form-control" name="clientId">
+						<c:forEach var="client" items="${clients}">
+							<c:choose>
+								<c:when test="${client.id == reservation.client.id}">
+									<option value="${client.id}" label="${client.nom}"
+										selected="selected" />
+								</c:when>
+								<c:otherwise>
+									<option value="${client.id}" label="${client.nom}" />
+								</c:otherwise>
+							</c:choose>
+						</c:forEach>
+					</select>
+				</div>
+				<div class="form-group">
+					<form:label path="passager">passager</form:label>
+					<form:select path="passager.id" cssClass="form-control">
+						<form:options items="${passagers}" itemLabel="nom" itemValue="id" />
+					</form:select>
 				</div>
 				<div>
 					<button class="btn btn-success" type="submit">enregistrer</button>

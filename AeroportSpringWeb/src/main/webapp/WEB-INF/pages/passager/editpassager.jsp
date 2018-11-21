@@ -31,6 +31,26 @@
 					<form:input path="prenom" cssClass="form-control" />
 					<form:errors path="prenom"></form:errors>
 				</div>
+				<div class="form-group">
+					<form:label path="adresse">Adresse</form:label>
+					<form:input path="adresse.adresse" cssClass="form-control" />
+					<form:errors path="adresse"></form:errors>
+				</div>
+				<div class="form-group">
+					<form:label path="adresse">Code Postal</form:label>
+					<form:input path="adresse.codePostale" cssClass="form-control" />
+					<form:errors path="adresse"></form:errors>
+				</div>
+				<div class="form-group">
+					<form:label path="adresse">Ville</form:label>
+					<form:input path="adresse.ville" cssClass="form-control" />
+					<form:errors path="adresse"></form:errors>
+				</div>
+				<div class="form-group">
+					<form:label path="adresse">Pays</form:label>
+					<form:input path="adresse.pays" cssClass="form-control" />
+					<form:errors path="adresse"></form:errors>
+				</div>
 				<div>
 					<button class="btn btn-success" type="submit">Enregistrer</button>
 					<a class="btn btn-warning" href="./">Annuler</a>

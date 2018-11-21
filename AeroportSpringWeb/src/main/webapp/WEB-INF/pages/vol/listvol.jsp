@@ -12,10 +12,26 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
 <title>liste des vols</title>
 </head>
 <body>
 	<div class="container">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav">
+					<li class="nav-item"><a class="nav-link" href="../vol/">vols</a></li>
+					<li class="nav-item"><a class="nav-link" href="../login/">logins</a></li>
+					<li class="nav-item"><a class="nav-link" href="../passager/">passagers</a></li>
+					<li class="nav-item"><a class="nav-link" href="../client/">clients</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="../reservation/">reservations</a></li>
+				</ul>
+			</div>
+		</nav>
 		<table class="table">
 			<tr>
 				<th>id</th>
