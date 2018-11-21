@@ -1,6 +1,6 @@
 package AeroportSpring.model;
-import java.io.Serializable;
 
+import java.io.Serializable;
 
 import javax.persistence.Embeddable;
 
@@ -11,7 +11,6 @@ public class Adresse {
 	private String codePostale;
 	private String ville;
 	private String pays;
-	
 
 	public Adresse() {
 	}
