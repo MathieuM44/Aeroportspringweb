@@ -86,9 +86,8 @@ public class ClientService {
 		return passagers;
 	}
 
-	public Client CreateClientPhysique(String nom, Login login, Adresse adresse) {
+	public Client CreateClient(Client client, Login login, Adresse adresse) {
 
-		Client clientPhy = new ClientPhysique();
 	
 		// Rendre persistent un login
 		if (login.getId() != null) {
@@ -110,13 +109,12 @@ public class ClientService {
 		//Manager le login
 		login = loginRepository.save(login);
 
-		clientPhy.setLogin(login);
-		clientPhy.setNom(nom);
-		clientPhy.setAdresse(adresse);
+		client.setLogin(login);
+		client.setAdresse(adresse);
 		
-		clientPhy = clientRepository.save(clientPhy);
+		client = clientRepository.save(client);
 		
-		return clientPhy;
+		return client;
 	}
 	
 	public Client createClientPhysique() {

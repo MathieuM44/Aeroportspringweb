@@ -19,7 +19,7 @@
 	<mvc:annotation-driven validator="validator"></mvc:annotation-driven>
 
 	<context:component-scan
-		base-package="aeroportSpringWeb.controller"></context:component-scan>
+		base-package="projetAeroportWeb.controller"></context:component-scan>
 
 	<!-- emplacement des vues -->
 
@@ -27,7 +27,7 @@
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 
-		<property name="prefix" value="A MODIFIER"></property>
+		<property name="prefix" value="/WEB-INF/pages"></property>
 
 		<property name="suffix" value=".jsp"></property>
 
