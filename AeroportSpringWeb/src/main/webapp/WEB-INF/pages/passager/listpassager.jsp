@@ -8,27 +8,46 @@
 <meta charset="UTF-8">
 <title>Liste des passagers</title>
 <link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+<link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <body>
-	<table class="table">
-		<tr>
-			<th>Id</th>
-			<th>Nom</th>
-			<th>Prénom</th>
-			<th></th>
-			<th></th>
-		</tr>
-		<c:forEach var="passager" items="${passagers}">
+	<div class="container">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav">
+					<li class="nav-item"><a class="nav-link" href="../vol/">vols</a></li>
+					<li class="nav-item"><a class="nav-link" href="../login/">logins</a></li>
+					<li class="nav-item"><a class="nav-link" href="../passager/">passagers</a></li>
+					<li class="nav-item"><a class="nav-link" href="../client/">clients</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="../reservation/">reservations</a></li>
+				</ul>
+			</div>
+		</nav>
+		<table class="table">
 			<tr>
-				<td>${passager.id}</td>
-				<td>${passager.nom}</td>
-				<td>${passager.prenom}</td>
-				<td><a class="btn btn-danger" href="./delete?id=${passager.id}">Supprimer</a></td>
-				<td><a class="btn btn-info" href="./edit?id=${passager.id}">Editer</a></td>
+				<th>Id</th>
+				<th>Nom</th>
+				<th>Prénom</th>
+				<th></th>
+				<th></th>
 			</tr>
-		</c:forEach>
-	</table>
-	<a class="btn btn-info" href="./addPassager">Nouveau passager</a>
+			<c:forEach var="passager" items="${passagers}">
+				<tr>
+					<td>${passager.id}</td>
+					<td>${passager.nom}</td>
+					<td>${passager.prenom}</td>
+					<td><a class="btn btn-danger"
+						href="./delete?id=${passager.id}">Supprimer</a></td>
+					<td><a class="btn btn-info" href="./edit?id=${passager.id}">Editer</a></td>
+				</tr>
+			</c:forEach>
+		</table>
+		<a class="btn btn-info" href="./addPassager">Nouveau passager</a>
+	</div>
 </body>
 </html>
