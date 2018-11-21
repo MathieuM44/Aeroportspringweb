@@ -29,9 +29,9 @@
 				<td><fmt:formatDate value="${vol.dateArrivee}"
 						pattern="dd/MM/yyyy" /></td>
 				<td><fmt:formatDate value="${vol.heureDepart}"
-						pattern="hh/MM/yyyy" /></td>
+						pattern="hh:mm" /></td>
 				<td><fmt:formatDate value="${vol.heureArrivee}"
-						pattern="dd/MM/yyyy" /></td>
+						pattern="hh:mm" /></td>
 				<td><a class="btn btn-danger" href="./deletevol?id=${vol.id}">supprimer un vol</a></td>
 				<td><a class="btn btn-info" href="./editvol?id=${vol.id}">editer le vol</a></td>
 			</tr>
