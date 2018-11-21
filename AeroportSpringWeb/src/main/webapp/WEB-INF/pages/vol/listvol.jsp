@@ -16,6 +16,22 @@
 </head>
 <body>
 	<div class="container">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav">
+					<li class="nav-item"><a class="nav-link"
+						href="../vol/">vols</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="../login/">logins</a></li>
+						<li class="nav-item"><a class="nav-link"
+						href="../passager/">passagers</a></li>
+						<li class="nav-item"><a class="nav-link"
+						href="../client/">clients</a></li>
+						<li class="nav-item"><a class="nav-link"
+						href="../reservation/">reservations</a></li>
+				</ul>
+			</div>
+		</nav>
 		<table class="table">
 			<tr>
 				<th>id</th>
