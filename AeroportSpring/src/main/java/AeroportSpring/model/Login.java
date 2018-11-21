@@ -12,10 +12,10 @@ import javax.persistence.Version;
 
 @Entity
 @Table(name = "login_projet_aeroport")
-@SequenceGenerator(name="seqLogin", sequenceName="seq_login", initialValue = 1, allocationSize=1)
+@SequenceGenerator(name = "seqLogin", sequenceName = "seq_login", initialValue = 1, allocationSize = 1)
 public class Login {
-	
-	//Attributs
+
+	// Attributs
 	@Id
 	@Column(name = "id_login", length = 12)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqLogin")
@@ -26,15 +26,15 @@ public class Login {
 	private String motDePasse;
 	@Column(name = "admin_login", length = 4)
 	private Boolean admin;
-	
-	//Association
+
+	// Association
 	@OneToOne(mappedBy = "login")
 	private Client client;
-	
-	//Version
+
+	// Version
 	@Version
 	int version;
-	
+
 	public Login() {
 	}
 
@@ -74,13 +74,20 @@ public class Login {
 		this.admin = admin;
 	}
 
-	
 	public Client getClient() {
 		return client;
 	}
 
 	public void setClient(Client client) {
 		this.client = client;
+	}
+
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
 	}
 
 	@Override
@@ -107,8 +114,5 @@ public class Login {
 			return false;
 		return true;
 	}
-	
-	
-	
 
 }
