@@ -16,6 +16,10 @@
 			<th>Id</th>
 			<th>Nom</th>
 			<th>Prénom</th>
+			<th>Adresse</th>
+			<th>Code postal</th>
+			<th>Ville</th>
+			<th>Pays</th>
 			<th></th>
 			<th></th>
 		</tr>
@@ -24,6 +28,10 @@
 				<td>${passager.id}</td>
 				<td>${passager.nom}</td>
 				<td>${passager.prenom}</td>
+				<td>${passager.adresse.adresse}</td>
+				<td>${passager.adresse.codePostale}</td>
+				<td>${passager.adresse.ville}</td>
+				<td>${passager.adresse.pays}</td>
 				<td><a class="btn btn-danger" href="./delete?id=${passager.id}">Supprimer</a></td>
 				<td><a class="btn btn-info" href="./edit?id=${passager.id}">Editer</a></td>
 			</tr>
