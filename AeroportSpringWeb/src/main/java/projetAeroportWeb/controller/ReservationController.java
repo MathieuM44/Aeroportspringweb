@@ -1,5 +1,6 @@
 package projetAeroportWeb.controller;
 
+import org.omg.CORBA.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import AeroportSpring.model.Client;
 import AeroportSpring.model.Reservation;
 import AeroportSpring.repositories.ClientRepository;
 import AeroportSpring.repositories.PassagerRepository;
@@ -66,10 +68,11 @@ public class ReservationController {
 	}
 
 	@PostMapping("/save")
-	public ModelAndView save(Reservation reservation, BindingResult br) {
+	public ModelAndView save(Reservation reservation, BindingResult br, @RequestParam(name="clientId") Long id) {
 		if (br.hasErrors()) {
 			return goEdit(reservation);
 		}
+		reservation.setClient(clientRepository.findById(id).get());
 		reservationRepository.save(reservation);
 		return new ModelAndView("redirect:/reservation/");
 	}

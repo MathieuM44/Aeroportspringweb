@@ -30,26 +30,29 @@
 				</div>
 				<div class="form-group">
 					<form:label path="numero">numero</form:label>
-					<form:input type="number" path="numero"
-						cssClass="form-control" />
+					<form:input type="number" path="numero" cssClass="form-control" />
 					<form:errors path="numero"></form:errors>
 				</div>
 				<div class="form-group">
 					<form:label path="vol">vol</form:label>
 					<form:select path="vol.id" cssClass="form-control">
-						<form:options items="${vols}" itemLabel="id" itemValue="id"/>
+						<form:options items="${vols}" itemLabel="id" itemValue="id" />
 					</form:select>
 				</div>
+
 				<div class="form-group">
-					<form:label path="client">client</form:label>
-					<form:select path="client.id" cssClass="form-control">
-						<form:options items="${clients}" itemLabel="nom" itemValue="id"/>
-					</form:select>
+					<label>client</label> <select class="form-control" name="clientId">
+						<c:forEach var="client" items="${clients}">
+							<option value="${client.id}" label="${client.nom}">
+								<c:if test="${client.id} == ${reservation.client.id}">selected="selected"</c:if>
+							</option>
+						</c:forEach>
+					</select>
 				</div>
 				<div class="form-group">
 					<form:label path="passager">passager</form:label>
 					<form:select path="passager.id" cssClass="form-control">
-						<form:options items="${passagers}" itemLabel="nom" itemValue="id"/>
+						<form:options items="${passagers}" itemLabel="nom" itemValue="id" />
 					</form:select>
 				</div>
 				<div>
