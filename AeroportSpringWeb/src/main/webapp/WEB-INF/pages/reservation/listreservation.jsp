@@ -18,6 +18,11 @@
 			<th>id</th>
 			<th>date</th>
 			<th>numero</th>
+			<th>vol</th>
+			<th>identifiant du client</th>
+			<th>nom du client</th>
+			<th>identifiant du passager</th>
+			<th>nom du passager</th>
 			<th></th>
 			<th></th>
 		</tr>
@@ -27,6 +32,11 @@
 				<td><fmt:formatDate value="${reservation.date}"
 						pattern="dd/MM/yyyy" /></td>
 				<td>${reservation.numero}</td>
+				<td>${reservation.vol.id}</td>
+				<td>${reservation.client.id}</td>
+				<td>${reservation.client.nom}</td>
+				<td>${reservation.passager.id}</td>
+				<td>${reservation.passager.nom}</td>
 				<td><a class="btn btn-danger" href="./delete?id=${reservation.id}">supprimer</a></td>
 				<td><a class="btn btn-info" href="./edit?id=${reservation.id}">editer</a></td>
 			</tr>
