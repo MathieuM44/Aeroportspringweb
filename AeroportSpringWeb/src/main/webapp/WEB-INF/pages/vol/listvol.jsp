@@ -30,11 +30,13 @@
 					<td>${vol.id}</td>
 					<td><fmt:formatDate value="${vol.dateDepart}"
 							pattern="dd/MM/yyyy" /></td>
+
 					<td><fmt:formatDate value="${vol.dateArrivee}"
 							pattern="dd/MM/yyyy" /></td>
-					<td><fmt:formatDate value="${vol.heureDepart}" pattern="hh:mm" /></td>
+					<td><fmt:formatDate value="${vol.heureDepart}"
+							pattern="hh:mm:ss" /></td>
 					<td><fmt:formatDate value="${vol.heureArrivee}"
-							pattern="hh:mm" /></td>
+							pattern="hh:mm:ss" /></td>
 
 					<td><a class="btn btn-danger" href="./delete?id=${vol.id}">supprimer</a></td>
 					<td><a class="btn btn-info" href="./editvol?id=${vol.id}">editer</a></td>
