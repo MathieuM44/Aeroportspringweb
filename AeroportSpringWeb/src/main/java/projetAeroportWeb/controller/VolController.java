@@ -50,8 +50,8 @@ public class VolController {
 		return goEdit(volRepository.findById(id).get());
 	}
 
-	@GetMapping("/addvol")
-	public ModelAndView addVol() {
+	@GetMapping("addvol")
+	public ModelAndView addvol() {
 		System.out.println("coucouadd");
 		return goEdit(new Vol());
 	}
@@ -62,7 +62,7 @@ public class VolController {
 	}
 
 	@PostMapping("/savevol")
-	public ModelAndView saveVol(@Valid @ModelAttribute("vol") Vol vol, BindingResult br) {
+	public ModelAndView savevol(@Valid @ModelAttribute("vol") Vol vol, BindingResult br) {
 		return save(vol, br);
 	}
 

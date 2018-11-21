@@ -15,31 +15,32 @@
 <title>liste des vols</title>
 </head>
 <body>
-	<table class="table">
-		<tr>
-			<th>id</th>
-			<th>date de depart</th>
-			<th>date d'arrivee</th>
-			<th>Heure de Depart</th>
-			<th>Heure d'Arrivee</th>
-			
-		</tr>
-		<c:forEach var="vol" items="${vols}">
+	<div class="container">
+		<table class="table">
 			<tr>
-				<td>${vol.id}</td>
-				<td><fmt:formatDate value="${vol.dateDepart}"
-						pattern="dd/MM/yyyy" /></td>
-				<td><fmt:formatDate value="${vol.dateArrivee}"
-						pattern="dd/MM/yyyy" /></td>
-				<td><fmt:formatDate value="${vol.heureDepart}"
-						pattern="hh:mm" /></td>
-				<td><fmt:formatDate value="${vol.heureArrivee}"
-						pattern="hh:mm" /></td>
-				
-				<td><a class="btn btn-danger" href="./delete?id=${vol.id}">supprimer</a></td>
-				<td><a class="btn btn-info" href="./editvol?id=${vol.id}">editer</a></td>
-		</c:forEach>
-	</table>
-	<a class="btn btn-info" href="./addvol"> nouveau vol</a>
+				<th>id</th>
+				<th>date de depart</th>
+				<th>date d'arrivee</th>
+				<th>Heure de Depart</th>
+				<th>Heure d'Arrivee</th>
+
+			</tr>
+			<c:forEach var="vol" items="${vols}">
+				<tr>
+					<td>${vol.id}</td>
+					<td><fmt:formatDate value="${vol.dateDepart}"
+							pattern="dd/MM/yyyy" /></td>
+					<td><fmt:formatDate value="${vol.dateArrivee}"
+							pattern="dd/MM/yyyy" /></td>
+					<td><fmt:formatDate value="${vol.heureDepart}" pattern="hh:mm" /></td>
+					<td><fmt:formatDate value="${vol.heureArrivee}"
+							pattern="hh:mm" /></td>
+
+					<td><a class="btn btn-danger" href="./delete?id=${vol.id}">supprimer</a></td>
+					<td><a class="btn btn-info" href="./editvol?id=${vol.id}">editer</a></td>
+			</c:forEach>
+		</table>
+		<a class="btn btn-info" href="./addvol"> nouveau vol</a>
+	</div>
 </body>
 </html>

@@ -20,26 +20,26 @@
 					<form:label path="id">id</form:label>
 					<form:input path="id" readonly="true" cssClass="form-control" />
 				</div>
-				<div class="form-group">
-					<form:label path="date">Date de depart</form:label>
-					<form:input path="date" cssClass="form-control" />
-					<form:errors path="date">Date de depart</form:errors>
-				</div>
-				<div class="form-group">
-					<form:label path="date">Date d'arrivee</form:label>
-					<form:input path="date" cssClass="form-control" />
-					<form:errors path="date">Date d'arrivee</form:errors>
-				</div>
-				<div class="form-group">
-					<form:label path="date">heure de depart</form:label>
-					<form:input type="date" path="date" cssClass="form-control" />
-					<form:errors path="date"></form:errors>
-				</div>
-				<div class="form-group">
-					<form:label path="date">heure d'arrivee</form:label>
-					<form:input type="date" path="date" cssClass="form-control" />
-					<form:errors path="date"></form:errors>
-				</div>
+<!-- 				<div class="form-group"> -->
+<%-- 					<form:label path="datedepart">Date de depart</form:label> --%>
+<%-- 					<form:input path="datedepart" cssClass="form-control" /> --%>
+<%-- 					<form:errors path="datedepart">Date de depart</form:errors> --%>
+<!-- 				</div> -->
+<!-- 				<div class="form-group"> -->
+<%-- 					<form:label path="datearrivee">Date d'arrivee</form:label> --%>
+<%-- 					<form:input path="datearrivee" cssClass="form-control" /> --%>
+<%-- 					<form:errors path="datearrivee">Date d'arrivee</form:errors> --%>
+<!-- 				</div> -->
+<!-- 				<div class="form-group"> -->
+<%-- 					<form:label path="heuredepart">heure de depart</form:label> --%>
+<%-- 					<form:input type="heuredepart" path="heuredepart" cssClass="form-control" /> --%>
+<%-- 					<form:errors path="heuredepart"></form:errors> --%>
+<!-- 				</div> -->
+<!-- 				<div class="form-group"> -->
+<%-- 					<form:label path="heurearrivee">heure d'arrivee</form:label> --%>
+<%-- 					<form:input type="heurearrivee" path="heurearrivee" cssClass="form-control" /> --%>
+<%-- 					<form:errors path="heurearrivee"></form:errors> --%>
+<!-- 				</div> -->
 				<div>
 					<div class="form-group">
 						<button type="submit" class=" btnbtn-success">enregistrer</button>
