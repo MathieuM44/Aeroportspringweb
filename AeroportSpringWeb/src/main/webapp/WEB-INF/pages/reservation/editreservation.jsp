@@ -34,6 +34,24 @@
 						cssClass="form-control" />
 					<form:errors path="numero"></form:errors>
 				</div>
+				<div class="form-group">
+					<form:label path="vol">vol</form:label>
+					<form:select path="vol.id" cssClass="form-control">
+						<form:options items="${vols}" itemLabel="id" itemValue="id"/>
+					</form:select>
+				</div>
+				<div class="form-group">
+					<form:label path="client">client</form:label>
+					<form:select path="client.id" cssClass="form-control">
+						<form:options items="${clients}" itemLabel="nom" itemValue="id"/>
+					</form:select>
+				</div>
+				<div class="form-group">
+					<form:label path="passager">passager</form:label>
+					<form:select path="passager.id" cssClass="form-control">
+						<form:options items="${passagers}" itemLabel="nom" itemValue="id"/>
+					</form:select>
+				</div>
 				<div>
 					<button class="btn btn-success" type="submit">enregistrer</button>
 					<a class="btn btn-warning" href="./">annuler</a>

@@ -10,7 +10,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import AeroportSpring.model.Reservation;
+import AeroportSpring.repositories.ClientRepository;
+import AeroportSpring.repositories.PassagerRepository;
 import AeroportSpring.repositories.ReservationRepository;
+import AeroportSpring.repositories.VolRepository;
 
 @Controller
 @RequestMapping("/reservation")
@@ -18,6 +21,15 @@ public class ReservationController {
 
 	@Autowired
 	private ReservationRepository reservationRepository;
+
+	@Autowired
+	private VolRepository volRepository;
+
+	@Autowired
+	private ClientRepository clientRepository;
+
+	@Autowired
+	private PassagerRepository passagerRepository;
 
 	@RequestMapping("")
 	public ModelAndView home() {
@@ -47,6 +59,9 @@ public class ReservationController {
 
 	private ModelAndView goEdit(Reservation reservation) {
 		ModelAndView modelAndView = new ModelAndView("reservation/editreservation", "reservation", reservation);
+		modelAndView.addObject("vols", volRepository.findAll());
+		modelAndView.addObject("clients", clientRepository.findAll());
+		modelAndView.addObject("passagers", passagerRepository.findAll());
 		return modelAndView;
 	}
 
