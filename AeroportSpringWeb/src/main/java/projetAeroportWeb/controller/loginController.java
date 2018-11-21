@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import AeroportSpring.model.Client;
 import AeroportSpring.model.Login;
 import AeroportSpring.repositories.LoginRepository;
 
@@ -83,4 +84,17 @@ public class loginController {
 		}
 		return new ModelAndView("redirect:/login/");
 	}
+
+	@GetMapping("/voirclient")
+	public ModelAndView voirClient(@RequestParam(name = "id", required = true) Long id) {
+
+		Login login = new Login();
+		login = loginRepository.findById(id).get();
+		Client c = login.getClient();
+		ModelAndView modelAndView = new ModelAndView("login/clientlogin", "client", c);
+		return modelAndView;
+//		return new ModelAndView("redirect:/login/clientlogin/");
+
+	}
+
 }
