@@ -30,6 +30,8 @@
 				<td>${login.admin }</td>
 				<td><a class="btn btn-danger" href="./delete?id=${login.id}">supprimer</a></td>
 				<td><a class="btn btn-info" href="./editlogin?id=${login.id}">editer</a></td>
+				<td><a class="btn btn-info" href="./voirclient?id=${login.id}">voir
+						client</a></td>
 		</c:forEach>
 	</table>
 	<a class="btn btn-info" href="./addLogin"> nouveau login</a>

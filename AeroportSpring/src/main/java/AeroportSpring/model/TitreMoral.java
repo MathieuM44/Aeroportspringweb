@@ -6,7 +6,7 @@ public enum TitreMoral {
 
 	private String titre;
 
-	 TitreMoral(String titre) {
+	TitreMoral(String titre) {
 		this.titre = titre;
 	}
 
