@@ -17,37 +17,38 @@
 <body>
 	<table class="table">
 		<tr>
+			<th>statut</th>
 			<th>ID</th>
-<!-- 			<th>titre</th> -->
-<!-- 			<th>prénom</th> -->
-<!-- 			<th>nom</th> -->
-<!-- 			<th>date de naissance</th> -->
-<!-- 			<th>adresse</th> -->
-<!-- 			<th>code postale</th> -->
-<!-- 			<th>ville</th> -->
-<!-- 			<th>cout</th> -->
-<!-- 			<th>entreprise</th> -->
-<!-- 			<th>salle</th> -->
-<!-- 			<th></th> -->
-<!-- 			<th></th> -->
+			<th>titre</th>
+			<th>prenom</th>
+			<th>Nom</th>
+			<th>Tél</th>
+			<th>Email</th>
+			<th>Adresse</th>
+			<th>CP</th>
+			<th>Ville</th>
+			<th>Pays</th>
+			<th>Siret</th>
+
+
 		</tr>
 		<c:forEach var="client" items="${clients}">
 			<tr>
+				<c:if test="${client.getClass().simpleName=='ClientEI'}"><td>Indépendant</td></c:if>
+				<c:if test="${client.getClass().simpleName=='ClientPhysique'}"><td>Client Physique</td></c:if>
+				<c:if test="${client.getClass().simpleName=='ClientMoral'}"><td>Entreprise</td></c:if>
+
 				<td>${client.id}</td>
-<%-- 				<td>${personne.titre}</td> --%>
-<%-- 				<td>${personne.prenom}</td> --%>
-<%-- 				<td>${personne.nom}</td> --%>
-<%-- 				<td><fmt:formatDate value="${personne.dtNaiss}" --%>
-<%-- 						pattern="dd/MM/yyyy" /></td> --%>
-<%-- 				<td>${personne.adresse.numero}${personne.adresse.rue}</td> --%>
-
-<%-- 				<td>${personne.adresse.codePostal}</td> --%>
-
-<%-- 				<td>${personne.adresse.ville}</td> --%>
-<%-- 				<td><c:if test="${personne.getClass().simpleName=='Formateur'}">${personne.cout}</c:if></td> --%>
-<%-- 				<td><c:if test="${personne.getClass().simpleName=='Stagiaire'}">${personne.entreprise}</c:if></td> --%>
-				
-<%-- 				<td>${personne.salle.nom}</td> --%>
+				<td>${client.titre}</td>
+				<td><c:if test="${client.getClass().simpleName!='ClientMoral'}">${client.prenom}</c:if></td>
+				<td>${client.nom}</td>
+				<td>${client.numeroTel}</td>
+				<td>${client.email}</td>
+				<td>${client.adresse.adresse}</td>
+				<td>${client.adresse.codePostale}</td>
+				<td>${client.adresse.ville}</td>
+				<td>${client.adresse.pays}</td>
+				<td><c:if test="${client.getClass().simpleName=='ClientMoral'}">${client.siret}</c:if></td>
 
 				<td><a href="./delete?id=${personne.id}"> supprimer</a></td>
 				<td><a href="./edit?id=${personne.id}"> modifier</a></td>

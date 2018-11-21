@@ -17,6 +17,7 @@ import AeroportSpring.model.Reservation;
 import AeroportSpring.model.TitrePhysique;
 import AeroportSpring.repositories.ClientRepository;
 import AeroportSpring.repositories.LoginRepository;
+import AeroportSpring.repositories.ReservationRepository;
 
 @Service
 public class ClientService {
@@ -26,6 +27,9 @@ public class ClientService {
 
 	@Autowired
 	LoginRepository loginRepository;
+
+	@Autowired
+	ReservationRepository reservationRepos;
 
 	public ClientService() {
 	}
@@ -50,9 +54,14 @@ public class ClientService {
 	}
 
 	public List<Reservation> reservationGet(Long id) {
-	
-		Client client = clientRepository.clientGetReservation(id);
-		return client.getReservations();
+
+		Optional<Client> opt = clientRepository.clientGetReservation(id);
+		if(opt.isPresent()) {
+			Client client = opt.get();
+			return client.getReservations();
+
+		}
+		return null;
 	}
 
 	// ------------------- Methodes principales -----------------------------
@@ -88,13 +97,12 @@ public class ClientService {
 
 	public Client CreateClient(Client client, Login login, Adresse adresse) {
 
-	
 		// Rendre persistent un login
 		if (login.getId() != null) {
 			Optional<Login> optLo = loginRepository.findById(login.getId());
 			if (optLo.isPresent()) {
 				if (login.equals(optLo)) {
-					//ne rien faire si les deux mdp sont égaux sinon en créer un en base
+					// ne rien faire si les deux mdp sont égaux sinon en créer un en base
 				} else {
 					login.setId(null);
 					loginRepository.save(login);
@@ -102,43 +110,57 @@ public class ClientService {
 			} else {
 				loginRepository.save(login);
 			}
-		}else {
+		} else {
 			loginRepository.save(login);
 		}
-		
-		//Manager le login
+
+		// Manager le login
 		login = loginRepository.save(login);
 
 		client.setLogin(login);
 		client.setAdresse(adresse);
-		
+
 		client = clientRepository.save(client);
-		
+
 		return client;
 	}
-	
+
+	public void delete(Long id) {
+		Optional<Client> opt = clientRepository.clientGetReservation(id);
+		if (opt.isPresent()) {
+			Client client = opt.get();
+			for (Reservation reservation : client.getReservations()) {
+				reservation.setClient(null);
+				reservationRepos.save(reservation);
+			}
+			clientRepository.delete(client);
+		}else {
+			System.out.println("------------- pas de reservation pour ce client ------------- ");
+		}
+
+	}
+
 	public Client createClientPhysique() {
-		
+
 		ClientPhysique clientPhy = new ClientPhysique();
-		
+
 		Adresse adresse = new Adresse();
 		adresse.setAdresse("non renseigné");
 		adresse.setVille("non renseigné");
-		
+
 		Login login = new Login("LoginParDefaut");
 		login.setMotDePasse("MdpParDefaut");
-		
+
 		login = loginRepository.save(login);
-		
+
 		clientPhy.setAdresse(adresse);
 		clientPhy.setLogin(login);
 		clientPhy.setNom("NomParDefaut");
-		
+
 		clientPhy = clientRepository.save(clientPhy);
-		
+
 		return clientPhy;
 
-		
 	}
 
 }

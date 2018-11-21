@@ -23,7 +23,9 @@ import javax.persistence.Version;
 
 @Entity
 @Table (name = "client_projet_aeroport")
+@NamedQuery(name = "Client.clientWithReservation", query = "select c from Client c left join fetch c.reservations")
 @NamedQuery(name = "Client.clientGetReservation", query = "select c from Client c left join fetch c.reservations where c.id = :idC")
+@NamedQuery(name = "Client.clientGetPassager", query = "select c from Client c left join fetch c.reservations cr left join fetch cr.passager where c.id = :idC")
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name="statut_juridique", discriminatorType = DiscriminatorType.STRING,length = 2)
 @SequenceGenerator(name="seqClient", sequenceName="seq_client", initialValue = 1, allocationSize=1)
