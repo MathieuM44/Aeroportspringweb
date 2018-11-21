@@ -65,8 +65,8 @@
 				
 
 				<div class="form-group">
-					<form:label path="adresse.numero">numero</form:label>
-					<form:input type="number" path="adresse.numero"
+					<form:label path="adresse.adresse">adresse</form:label>
+					<form:input  path="adresse.numero"
 						cssClass="form-control" />
 					<form:errors path="adresse.numero"></form:errors>
 				</div>
@@ -90,29 +90,8 @@
 					<form:errors path="adresse.ville"></form:errors>
 				</div>
 
-				<div class="form-group">
-					<form:label path="dtNaiss">numero</form:label>
-					<form:input type="date" path="dtNaiss" cssClass="form-control" />
-					<form:errors path="dtNaiss"></form:errors>
-				</div>
 
-
-				<c:choose>
-					<c:when test="${personne.getClass().simpleName=='Formateur'}">
-						<div class="form-group">
-							<form:label path="cout">cout</form:label>
-							<form:input path="cout" cssClass="form-control" />
-							<form:errors path="cout"></form:errors>
-						</div>
-					</c:when>
-					<c:otherwise>
-						<div class="form-group">
-							<form:label path="entreprise">entreprise</form:label>
-							<form:input path="entreprise" cssClass="form-control" />
-							<form:errors path="entreprise"></form:errors>
-						</div>
-					</c:otherwise>
-				</c:choose>
+				
 
 				<div class="form-group">
 					<form:label path="salle">salle</form:label>
