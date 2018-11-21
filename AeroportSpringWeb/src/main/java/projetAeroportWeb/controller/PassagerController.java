@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import AeroportSpring.model.Passager;
 import AeroportSpring.repositories.PassagerRepository;
+import AeroportSpring.services.PassagerService;
 
 @Controller
 @RequestMapping("/passager")
@@ -23,6 +24,8 @@ public class PassagerController {
 
 	@Autowired
 	private PassagerRepository passagerRepository;
+	@Autowired
+	private PassagerService passagerService;
 
 	@RequestMapping("")
 	public ModelAndView home() {
@@ -31,7 +34,7 @@ public class PassagerController {
 
 	@GetMapping("/")
 	public ModelAndView list() {
-		ModelAndView modelAndView = new ModelAndView("passager/listpassger", "passagers", passagerRepository.findAll());
+		ModelAndView modelAndView = new ModelAndView("passager/listpassager", "passagers", passagerRepository.findAll());
 		return modelAndView;
 	}
 
@@ -49,7 +52,7 @@ public class PassagerController {
 	}
 
 	@GetMapping("/addPassager")
-	public ModelAndView addSalle() {
+	public ModelAndView addPassager() {
 		return goEdit(new Passager());
 	}
 
