@@ -16,20 +16,20 @@
 	<table class="table">
 		<tr>
 			<th>id</th>
-			<th>titre</th>
-			<th>prenom</th>
-			<th>nom</th>
-			<th>date de naissance</th>
-			<th>adresse</th>
-			<th>code postal</th>
-			<th>ville</th>
-			<th>cout</th>
-			<th>entreprise</th>
-			<th>salle</th>
+			<th>date</th>
+			<th>numero</th>
 			<th></th>
 			<th></th>
 		</tr>
 		<c:forEach var="reservation" items="${reservations}">
+			<tr>
+				<td>${reservation.id}</td>
+				<td><fmt:formatDate value="${reservation.date}"
+						pattern="dd/MM/yyyy" /></td>
+				<td>${reservation.numero}</td>
+				<td><a class="btn btn-danger" href="./delete?id=${reservation.id}">supprimer</a></td>
+				<td><a class="btn btn-info" href="./edit?id=${reservation.id}">editer</a></td>
+			</tr>
 		</c:forEach>
 	</table>
 	<a class="btn btn-danger" href="./add">nouvelle reservation</a>

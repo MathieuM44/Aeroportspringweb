@@ -63,6 +63,6 @@
 
 
 
-	<jpa:repositories base-package="AeroportSpring.Repositories"></jpa:repositories>
+	<jpa:repositories base-package="AeroportSpring.repositories"></jpa:repositories>
 
 </beans>
