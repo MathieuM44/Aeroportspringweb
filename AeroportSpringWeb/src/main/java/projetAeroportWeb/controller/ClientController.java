@@ -28,7 +28,7 @@ public class ClientController {
 
 		@GetMapping("/")
 		public ModelAndView list() {
-			ModelAndView modelAndView = new ModelAndView("client/list", "personnes", clientRepo.findAll());
+			ModelAndView modelAndView = new ModelAndView("client/list", "clients", clientRepo.findAll());
 			return modelAndView;
 		}
 
