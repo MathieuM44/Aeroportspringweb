@@ -56,7 +56,7 @@ public class ClientService {
 	public List<Reservation> reservationGet(Long id) {
 
 		Optional<Client> opt = clientRepository.clientGetReservation(id);
-		if(opt.isPresent()) {
+		if (opt.isPresent()) {
 			Client client = opt.get();
 			return client.getReservations();
 
@@ -134,8 +134,14 @@ public class ClientService {
 				reservationRepos.save(reservation);
 			}
 			clientRepository.delete(client);
-		}else {
-			System.out.println("------------- pas de reservation pour ce client ------------- ");
+		} else {
+			
+			Optional<Client> opt2 = clientRepository.findById(id);
+
+
+				Client client = opt2.get();
+			
+			clientRepository.delete(client);
 		}
 
 	}

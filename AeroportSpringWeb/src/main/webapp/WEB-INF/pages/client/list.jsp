@@ -50,8 +50,8 @@
 				<td>${client.adresse.pays}</td>
 				<td><c:if test="${client.getClass().simpleName=='ClientMoral'}">${client.siret}</c:if></td>
 
-				<td><a href="./delete?id=${personne.id}"> supprimer</a></td>
-				<td><a href="./edit?id=${personne.id}"> modifier</a></td>
+				<td><a href="./del?id=${client.id}"> supprimer</a></td>
+				<td><a href="./edit?id=${client.id}"> modifier</a></td>
 			</tr>
 
 		</c:forEach>
