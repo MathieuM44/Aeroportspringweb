@@ -9,48 +9,35 @@
 <meta charset="UTF-8">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<title>liste des personnes</title>
+<title>liste des vols</title>
 </head>
 <body>
 
 	<table class="table">
 		<tr>
 			<th>id</th>
-			<th>titre</th>
-			<th><spring:message code="personne.list.prenom"></spring:message></th>
-			<th><spring:message code="personne.list.nom"></spring:message></th>
-			<th>date de naissance</th>
-			<th>adresse</th>
-			<th>code postal</th>
-			<th>ville</th>
-			<th>cout</th>
-			<th>entreprise</th>
-			<th></th>
-			<th></th>
+			<th>Date de Depart</th>
+			<th>Date d'arrivee</th>
+			<th>Heure de depart</th>
+			<th>Heure d'arrivee</th>
 		</tr>
-		<c:forEach var="personne" items="${personnes}">
+		<c:forEach var="vol" items="${vols}">
 			<tr>
-				<td>${personne.id}</td>
-				<td>${personne.titre}</td>
-				<td>${personne.prenom}</td>
-				<td>${personne.nom}</td>
-				<td><fmt:formatDate value="${personne.dtNaiss}"
+				<td>${vol.id}</td>
+				<td><fmt:formatDate value="${vol.dateDepart}"
 						pattern="dd/MM/yyyy" /></td>
-				<td>${personne.adresse.numero}${personne.adresse.rue}</td>
-				<td>${personne.adresse.codePostal}</td>
-				<td>${personne.adresse.ville}</td>
-				<td><c:if
-						test="${personne.getClass().name=='formationJpa.model.Formateur'}">${personne.cout}</c:if>
-				</td>
-				<td><c:if test="${personne.getClass().simpleName=='Stagiaire'}">${personne.entreprise}</c:if>
-				</td>
-				<td><a class="btn btn-danger" href="./delete?id=${personne.id}">supprimer</a></td>
-				<td><a class="btn btn-info" href="./edit?id=${personne.id}">editer</a></td>
+				<td><fmt:formatDate value="${vol.dateArrivee}"
+						pattern="dd/MM/yyyy" /></td>
+				<td><fmt:formatDate value="${vol.heureDepart}"
+						pattern="hh/MM/yyyy" /></td>
+				<td><fmt:formatDate value="${vol.heureArrivee}"
+						pattern="dd/MM/yyyy" /></td>
+				<td><a class="btn btn-danger" href="./deletevol?id=${vol.id}">supprimer un vol</a></td>
+				<td><a class="btn btn-info" href="./editvol?id=${vol.id}">editer le vol</a></td>
 			</tr>
 		</c:forEach>
 	</table>
 
-	<a class="btn btn-info" href="./addFormateur">nouveau formateur</a>
-	<a class="btn btn-info" href="./addStagiaire">nouveau stagiaire</a>
+	<a class="btn btn-info" href="./addvol">nouveau vol</a>
 </body>
 </html>
