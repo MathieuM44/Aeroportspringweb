@@ -58,6 +58,7 @@ public class PassagerController {
 
 	private ModelAndView goEdit(Passager passager) {
 		ModelAndView modelAndView = new ModelAndView("passager/editpassager", "passager", passager);
+		modelAndView.addObject("adresse", passager.getAdresse());
 		return modelAndView;
 	}
 
