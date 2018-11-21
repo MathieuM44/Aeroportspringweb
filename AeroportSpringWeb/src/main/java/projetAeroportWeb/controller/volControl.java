@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-
+import AeroportSpring.model.Login;
 import AeroportSpring.model.Vol;
-
+import AeroportSpring.repositories.LoginRepository;
 import AeroportSpring.repositories.VolRepository;
 
 @Controller
 @RequestMapping("/vol")
-public class VolController {
+public class volControl {
 
 	@Autowired
 	private VolRepository volRepository;
@@ -30,39 +30,45 @@ public class VolController {
 	}
 
 	@GetMapping(value = { "/" })
-	public ModelAndView listvol() {
-		ModelAndView modelAndView = new ModelAndView("vol/listvol", "vols", volRepository.findAll());
+	public ModelAndView listelogin() {
+		ModelAndView modelAndView = new ModelAndView("vol/listevol", "vols", volRepository.findAll());
 		return modelAndView;
 
 	}
 
 	@GetMapping("/delete")
 	public ModelAndView delete(@RequestParam(name = "id", required = true) Long id) {
-		volRepository.deleteById(id);
 
+		volRepository.deleteById(id);
 		return new ModelAndView("redirect:/vol/");
 
 	}
 
-	@GetMapping("/editvol")
+	@GetMapping("/editlogin")
 	public ModelAndView edit(@RequestParam(name = "id", required = true) Long id) {
-		System.out.println("coucouedit");
+//		Optional<Login> oplog= loginRepository.findById(id);
+//		if (oplog.isPresent()) {
+//			return goEdit(oplog.get());
+//		} else {
+//			return new ModelAndView("redirect:/login/");
+//		}
 		return goEdit(volRepository.findById(id).get());
 	}
 
-	@GetMapping("/addvol")
+	@GetMapping("addVol")
 	public ModelAndView addVol() {
-		System.out.println("coucouadd");
 		return goEdit(new Vol());
 	}
 
-	private ModelAndView goEdit(Vol vol) {
-		ModelAndView modelAndView = new ModelAndView("vol/editvol", "vol", vol);
+	private ModelAndView goEdit(Vol p) {
+		ModelAndView modelAndView = new ModelAndView("vol/editvol", "vol", p);
+//		modelAndView.addObject("titres", Titre.values());
+//		modelAndView.addObject("salles", daoSalle.findAll());
 		return modelAndView;
 	}
 
-	@PostMapping("/savevol")
-	public ModelAndView saveVol(@Valid @ModelAttribute("vol") Vol vol, BindingResult br) {
+	@PostMapping("/saveVol")
+	public ModelAndView saveLogin(@Valid @ModelAttribute("vol") Vol vol, BindingResult br) {
 		return save(vol, br);
 	}
 
@@ -71,10 +77,12 @@ public class VolController {
 			return goEdit(vol);
 		}
 
+//		if(personne.getSalle()!=null&&personne.getSalle().getNumero()==null) {
+//			personne.setSalle(null);
+//		}
 		else {
-			volRepository.save(vol);
-
+			loginRepository.save(login);
 		}
-		return new ModelAndView("redirect:/vol/");
+		return new ModelAndView("redirect:/login/");
 	}
 }
