@@ -43,9 +43,15 @@
 				<div class="form-group">
 					<label>client</label> <select class="form-control" name="clientId">
 						<c:forEach var="client" items="${clients}">
-							<option value="${client.id}" label="${client.nom}">
-								<c:if test="${client.id} == ${reservation.client.id}">selected="selected"</c:if>
-							</option>
+							<c:choose>
+								<c:when test="${client.id == reservation.client.id}">
+									<option value="${client.id}" label="${client.nom}"
+										selected="selected" />
+								</c:when>
+								<c:otherwise>
+									<option value="${client.id}" label="${client.nom}" />
+								</c:otherwise>
+							</c:choose>
 						</c:forEach>
 					</select>
 				</div>
