@@ -52,8 +52,8 @@ public class TestServiceClient {
 		Login login = new Login();
 		login.setId((long) 1);
 		
-		Client clientPhysique2 = (ClientPhysique) clientService.CreateClientPhysique("Paul",login,adresse);
-		assertNotNull(clientPhysique2);
+//		Client clientPhysique2 = (ClientPhysique) clientService.CreateClientPhysique("Paul",login,adresse);
+//		assertNotNull(clientPhysique2);
 
 		//test  récupérer l'ensemble des vols d'un client
 		
@@ -74,7 +74,7 @@ public class TestServiceClient {
 		
 		reservation.setVol(vol);
 			
-		reservation.setClient(clientPhysique2);
+//		reservation.setClient(clientPhysique2);
 		
 		Passager passager = new Passager("Jean", "Martin");
 
@@ -85,8 +85,8 @@ public class TestServiceClient {
 		
 		reservation = reservationRepository.save(reservation);
 		
-		System.out.println(clientService.numVolPrint(clientPhysique2.getId()));
-		System.out.println(clientService.findAllPassager(clientPhysique2.getId()));
+//		System.out.println(clientService.numVolPrint(clientPhysique2.getId()));
+//		System.out.println(clientService.findAllPassager(clientPhysique2.getId()));
 	}
 
 }
