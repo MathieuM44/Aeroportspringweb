@@ -47,23 +47,36 @@
 
 				<div class="form-group">
 					<form:label path="titre">civilite</form:label>
-					<form:select path="titre" items="${titres}" itemLabel="titre"
-						cssClass="form-control" />
+
+					<c:if test="${client.getClass().simpleName=='ClientPhysique'}">
+						<form:select path="titre" items="${titresP}" itemLabel="titre"
+							cssClass="form-control" />
+					</c:if>
+					<c:if test="${client.getClass().simpleName=='ClientEI'}">
+						<form:select path="titre" items="${titresP}" itemLabel="titre"
+							cssClass="form-control" />
+					</c:if>
+					<c:if test="${client.getClass().simpleName=='ClientMoral'}">
+						<form:select path="titre" items="${titresM}" itemLabel="titre"
+							cssClass="form-control" />
+					</c:if>
 				</div>
 
-				<div class="form-group">
-					<form:label path="nom">nom</form:label>
-					<form:input path="nom" cssClass="form-control" />
-					<form:errors path="nom"></form:errors>
-				</div>
-
-				<c:if test="${personne.getClass().simpleName!='ClientEI'}">
+				<c:if test="${client.getClass().simpleName != 'ClientMoral'}">
 					<div class="form-group">
 						<form:label path="prenom">prenom</form:label>
 						<form:input path="prenom" cssClass="form-control" />
 						<form:errors path="prenom"></form:errors>
 					</div>
 				</c:if>
+				
+				<div class="form-group">
+					<form:label path="nom">nom</form:label>
+					<form:input path="nom" cssClass="form-control" />
+					<form:errors path="nom"></form:errors>
+				</div>
+
+
 
 
 				<div class="form-group">
@@ -106,8 +119,8 @@
 
 				</table>
 
-
-
+				<button class="btn btn-success" type="submit">enregistrer</button>
+				<a class="btn btn-danger" href="./"> annuler</a>
 			</form:form>
 
 

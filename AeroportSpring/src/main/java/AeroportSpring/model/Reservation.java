@@ -73,9 +73,6 @@ public class Reservation {
 		this.id = id;
 	}
 
-
-
-
 	public Vol getVol() {
 		return vol;
 	}

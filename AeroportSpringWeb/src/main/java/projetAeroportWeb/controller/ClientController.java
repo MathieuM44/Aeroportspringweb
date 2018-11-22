@@ -58,21 +58,28 @@ public class ClientController {
 		return goEdit(client);
 	}
 
-//	@GetMapping("/addFormateur")
-//	public ModelAndView addFormateur() {
-//		return goEdit(new Formateur());
-//	}
-//
-//	@GetMapping("/addStagiaire")
-//	public ModelAndView addStagiaire() {
-//		return goEdit(new Stagiaire());
-//
-//	}
+	@GetMapping("/addClientPhysique")
+	public ModelAndView addClientPhysique() {
+		return goEdit(new ClientPhysique());
+	}
+
+	@GetMapping("/addClientMoral")
+	public ModelAndView addClientMoral() {
+		return goEdit(new ClientMoral());
+
+	}
+	
+	@GetMapping("/addClientEI")
+	public ModelAndView addClientEI() {
+		return goEdit(new ClientEI());
+
+	}
+	
 
 	public ModelAndView goEdit(Client p) {
 		ModelAndView modelAndView = new ModelAndView("client/edit", "client", p);
-		modelAndView.addObject("titres", TitrePhysique.values());
-		modelAndView.addObject("titres", TitreMoral.values());
+		modelAndView.addObject("titresP", TitrePhysique.values());
+		modelAndView.addObject("titresM", TitreMoral.values());
 		modelAndView.addObject("reservationss", p.getReservations());
 
 		return modelAndView;
