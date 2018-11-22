@@ -25,7 +25,7 @@ public class Reservation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqReservation")
 	@Column(name = "id_reservation")
-	private Long Id;
+	private Long id;
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	@Column(name = "date_reservation", length = 400, nullable = false)
@@ -51,9 +51,8 @@ public class Reservation {
 	@JoinColumn(name = "client_id")
 	private Client client;
 
-	public Long getId() {
-		return Id;
-	}
+
+
 
 	public Reservation(Date date, Integer numero) {
 		super();
@@ -62,8 +61,18 @@ public class Reservation {
 		this.numero = numero;
 
 	}
+	
+	
 
 	
+	public Long getId() {
+		return id;
+	}
+	
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public Vol getVol() {
 		return vol;
 	}
@@ -76,19 +85,7 @@ public class Reservation {
 
 	}
 
-	public Reservation(Long id, Date date, Integer numero, int version, Passager passager, Client client) {
-		super();
-		Id = id;
-		this.date = date;
-		this.numero = numero;
-		this.version = version;
-		this.passager = passager;
-		this.client = client;
-	}
-
-	public void setId(Long id) {
-		Id = id;
-	}
+	
 
 	public Date getDate() {
 		return date;
@@ -130,29 +127,5 @@ public class Reservation {
 		this.client = client;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((Id == null) ? 0 : Id.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Reservation other = (Reservation) obj;
-		if (Id == null) {
-			if (other.Id != null)
-				return false;
-		} else if (!Id.equals(other.Id))
-			return false;
-		return true;
-	}
-
+	
 }
