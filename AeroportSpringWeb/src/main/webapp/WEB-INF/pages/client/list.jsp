@@ -15,6 +15,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+<div class = "container">
+<h1> Liste des clients</h1>
 	<table class="table">
 		<tr>
 			<th>statut</th>
@@ -50,14 +52,18 @@
 				<td>${client.adresse.pays}</td>
 				<td><c:if test="${client.getClass().simpleName=='ClientMoral'}">${client.siret}</c:if></td>
 
-				<td><a href="./del?id=${client.id}"> supprimer</a></td>
-				<td><a href="./edit?id=${client.id}"> modifier</a></td>
+				<td><a class="btn btn-danger" href="./del?id=${client.id}"> supprimer</a></td>
+				<td><a class = "btn btn-warning" href="./edit?id=${client.id}"> modifier</a></td>
 			</tr>
 
 		</c:forEach>
 
 	</table>
 
-	<a href="./addClient"> Add client</a>
+	<a class ="btn btn-success" href="./addClientPhysique"> Add client physique</a>
+		<a class ="btn btn-success" href="./addClientMoral"> Add client moral</a>
+	
+		<a class ="btn btn-success" href="./addClientEI"> Add client indépendant</a>
+	</div>
 </body>
 </html>
