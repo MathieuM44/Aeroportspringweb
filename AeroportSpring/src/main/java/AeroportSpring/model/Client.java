@@ -136,6 +136,8 @@ public abstract class Client {
 	}
 	
 
+
+
 	public List<Reservation> getReservations() {
 		return reservations;
 	}
@@ -167,6 +169,14 @@ public abstract class Client {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
+	}
+
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
 	}
 
 	

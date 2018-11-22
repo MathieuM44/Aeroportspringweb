@@ -1,13 +1,22 @@
 package projetAeroportWeb.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestAttribute;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import AeroportSpring.model.Client;
+import AeroportSpring.model.ClientEI;
+import AeroportSpring.model.ClientMoral;
+import AeroportSpring.model.ClientPhysique;
+import AeroportSpring.model.TitreMoral;
+import AeroportSpring.model.TitrePhysique;
 import AeroportSpring.repositories.ClientRepository;
 import AeroportSpring.services.ClientService;
 
@@ -40,4 +49,62 @@ public class ClientController {
 	}
 
 
+	
+	
+	
+	@GetMapping("/edit")
+	public ModelAndView edit(@RequestParam(name = "id", required = true) Long id) {
+		Client client = clientService.GetWithResa(id);
+		return goEdit(client);
+	}
+
+//	@GetMapping("/addFormateur")
+//	public ModelAndView addFormateur() {
+//		return goEdit(new Formateur());
+//	}
+//
+//	@GetMapping("/addStagiaire")
+//	public ModelAndView addStagiaire() {
+//		return goEdit(new Stagiaire());
+//
+//	}
+
+	public ModelAndView goEdit(Client p) {
+		ModelAndView modelAndView = new ModelAndView("client/edit", "client", p);
+		modelAndView.addObject("titres", TitrePhysique.values());
+		modelAndView.addObject("titres", TitreMoral.values());
+		modelAndView.addObject("reservationss", p.getReservations());
+
+		return modelAndView;
+	}
+
+	@GetMapping("/saveClientPhysique")
+	public ModelAndView saveFormateur(@Valid @ModelAttribute("client") ClientPhysique cp, BindingResult br ) {
+		return save(cp,br);
+
+	}
+
+	@GetMapping("/saveClientMoral")
+	public ModelAndView saveFormateur(@Valid @ModelAttribute("client") ClientMoral cm, BindingResult br ) {
+		return save(cm,br);
+
+	}
+	
+	@GetMapping("/saveClientEI")
+	public ModelAndView saveFormateur(@Valid @ModelAttribute("client") ClientEI cei, BindingResult br ) {
+		return save(cei,br);
+
+	}
+	
+	private ModelAndView save(Client client, BindingResult br) {
+		if(br.hasErrors()) {
+			return goEdit(client);
+		}
+		
+	
+			clientRepo.save(client);
+	
+		
+		return new ModelAndView("redirect:/client/");
+	}
 }

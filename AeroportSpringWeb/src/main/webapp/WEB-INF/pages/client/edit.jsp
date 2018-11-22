@@ -22,20 +22,21 @@
 
 			<legend> edition du client</legend>
 
-			<c:choose>
-				<c:when test="${personne.getClass().simpleName=='ClientPhysique'}">
-					<c:url value="saveClientPhysique" var="action"></c:url>
-				</c:when>
-				<c:when test="${personne.getClass().simpleName=='ClientMoral'}">
-					<c:url value="saveClientMoral" var="action"></c:url>
-				</c:when>
-				<c:when test="${personne.getClass().simpleName=='ClientEI'}">
-					<c:url value="saveClientEI" var="action"></c:url>
-				</c:when>
-			</c:choose>
+			<c:if test="${client.getClass().simpleName=='ClientPhysique'}">
+				<c:url value="saveClientPhysique" var="action"></c:url>
+			</c:if>
+
+			<c:if test="${client.getClass().simpleName=='ClientMoral'}">
+				<c:url value="saveClientMoral" var="action"></c:url>
+			</c:if>
+
+			<c:if test="${client.getClass().simpleName=='ClientEI'}">
+				<c:url value="saveClientEI" var="action"></c:url>
+			</c:if>
 
 
-			<form:form action="${action}" method="get" modelAttribute="personne">
+
+			<form:form action="${action}" method="get" modelAttribute="client">
 
 				<form:hidden path="version" />
 
@@ -56,56 +57,54 @@
 					<form:errors path="nom"></form:errors>
 				</div>
 
-				<c:when test="${personne.getClass().simpleName!='ClientEI'}">
-<div class="form-group">
-					<form:label path="prenom">prenom</form:label>
-					<form:input path="prenom" cssClass="form-control" />
-					<form:errors path="prenom"></form:errors>
-				</div>				</c:when>
-				
+				<c:if test="${personne.getClass().simpleName!='ClientEI'}">
+					<div class="form-group">
+						<form:label path="prenom">prenom</form:label>
+						<form:input path="prenom" cssClass="form-control" />
+						<form:errors path="prenom"></form:errors>
+					</div>
+				</c:if>
+
 
 				<div class="form-group">
 					<form:label path="adresse.adresse">adresse</form:label>
-					<form:input  path="adresse.numero"
-						cssClass="form-control" />
-					<form:errors path="adresse.numero"></form:errors>
+					<form:input path="adresse.adresse" cssClass="form-control" />
+					<form:errors path="adresse.adresse"></form:errors>
 				</div>
 
-				<div class="form-group">
-					<form:label path="adresse.rue">rue</form:label>
-					<form:input path="adresse.rue" cssClass="form-control" />
-					<form:errors path="adresse.rue"></form:errors>
-				</div>
 
 				<div class="form-group">
-					<form:label path="adresse.codePostal">numero</form:label>
-					<form:input type="number" path="adresse.codePostal"
-						cssClass="form-control" />
-					<form:errors path="adresse.codePostal"></form:errors>
-				</div>
-
-				<div class="form-group">
-					<form:label path="adresse.ville">numero</form:label>
-					<form:input path="adresse.ville" />
+					<form:label path="adresse.ville">ville</form:label>
+					<form:input path="adresse.ville" cssClass="form-control" />
 					<form:errors path="adresse.ville"></form:errors>
 				</div>
 
-
-				
-
 				<div class="form-group">
-					<form:label path="salle">salle</form:label>
-					<form:select path="salle.numero" cssClass="form-control">
-
-						<form:option value="">Pas de salle</form:option>
-						<form:options items="${salles}" itemLabel="nom" itemValue="numero"></form:options>
-
-					</form:select>
+					<form:label path="adresse.pays">pays</form:label>
+					<form:input path="adresse.pays" cssClass="form-control" />
+					<form:errors path="adresse.pays"></form:errors>
 				</div>
 
-				<button type="submit">enregistrer</button>
-				<a class="btn btn-warning" href="./">annuler</a>
+				<table class="table">
+					<tr>
 
+						<th>ID</th>
+						<th>numero</th>
+
+					</tr>
+					<c:forEach var="resa" items="${reservations}">
+						<tr>
+
+							<td>${resa.id}</td>
+							<td>${resa.numero}</td>
+
+							<td><a href="./del?id=${client.id}"> supprimer</a></td>
+							<td><a href="./edit?id=${client.id}"> modifier</a></td>
+						</tr>
+
+					</c:forEach>
+
+				</table>
 
 
 

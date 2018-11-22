@@ -81,6 +81,21 @@ public class ClientService {
 		return s;
 	}
 
+	public Client GetWithResa(Long id) {
+
+		Optional<Client> opt = clientRepository.clientGetReservation(id);
+		if (opt.isPresent()) {
+			Client client = opt.get();
+			return client;
+
+		}
+		Optional<Client> opt2 = clientRepository.findById(id);
+		Client client = opt2.get();
+
+		return client;
+
+	}
+
 	public List<Passager> findAllPassager(Long id) {
 
 		List<Passager> passagers = new ArrayList<>();
@@ -135,12 +150,11 @@ public class ClientService {
 			}
 			clientRepository.delete(client);
 		} else {
-			
+
 			Optional<Client> opt2 = clientRepository.findById(id);
 
+			Client client = opt2.get();
 
-				Client client = opt2.get();
-			
 			clientRepository.delete(client);
 		}
 
