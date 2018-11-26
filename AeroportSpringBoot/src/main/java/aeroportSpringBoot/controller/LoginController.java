@@ -20,7 +20,7 @@ import aeroportSpringBoot.repositories.LoginRepository;
 
 @Controller
 @RequestMapping("/login")
-public class loginController {
+public class LoginController {
 
 	@Autowired
 	private LoginRepository loginRepository;
@@ -38,12 +38,10 @@ public class loginController {
 	public ModelAndView listelogin() {
 		ModelAndView modelAndView = new ModelAndView("login/listelogin", "logins", loginRepository.findAll());
 		return modelAndView;
-
 	}
 
 	@GetMapping("/delete")
 	public ModelAndView delete(@RequestParam(name = "id", required = true) Long id) {
-
 		loginRepository.deleteById(id);
 		return new ModelAndView("redirect:/login/");
 
@@ -54,19 +52,19 @@ public class loginController {
 		return goEdit(loginRepository.findById(id).get());
 	}
 
-	@GetMapping("addLogin")
+	@GetMapping("/addLogin")
 	public ModelAndView addLogin() {
 		return goEdit(new Login());
 	}
 
 	private ModelAndView goEdit(Login p) {
-		ModelAndView modelAndView = new ModelAndView("login/editlogin", "login", p);
+		ModelAndView modelAndView = new ModelAndView("login/editlogin", "log", p);
 		return modelAndView;
 	}
 
 	
-	@PostMapping("/save")
-	private ModelAndView save(@Valid @ModelAttribute("login")Login login, BindingResult br) {
+	@GetMapping("/save")
+	private ModelAndView save(@Valid @ModelAttribute("log")Login login, BindingResult br) {
 		System.out.println("mark 1");
 		if (br.hasErrors()) {
 			for (ObjectError error :br.getAllErrors()) {
