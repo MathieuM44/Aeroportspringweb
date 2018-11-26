@@ -1,10 +1,10 @@
 package projetAeroportWeb.controller;
 
-import org.omg.CORBA.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,6 +16,7 @@ import AeroportSpring.repositories.ClientRepository;
 import AeroportSpring.repositories.PassagerRepository;
 import AeroportSpring.repositories.ReservationRepository;
 import AeroportSpring.repositories.VolRepository;
+import jdk.nashorn.internal.ir.RuntimeNode.Request;
 
 @Controller
 @RequestMapping("/reservation")
@@ -78,6 +79,7 @@ public class ReservationController {
 	}
 	
 	
+<<<<<<< HEAD
 	// Via la liste "Client" (accessible par la vue client)
 	
 	@GetMapping("/{id}")
@@ -120,5 +122,13 @@ public class ReservationController {
 	}
 	
 	
+=======
+	@GetMapping("/{id}")
+	public ModelAndView listId(@PathVariable(name = "id") Long id) {
+		return new ModelAndView("reservation/listreservation", "reservations", reservationRepository.findAllWithClientId(id));
+		
+	}
+
+>>>>>>> master
 	
 }

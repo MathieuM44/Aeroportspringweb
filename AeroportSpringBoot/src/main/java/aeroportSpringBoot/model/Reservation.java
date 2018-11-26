@@ -1,4 +1,4 @@
-package AeroportSpring.model;
+package aeroportSpringBoot.model;
 
 import java.util.Date;
 
@@ -9,7 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -21,7 +20,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 @Table(name = "Reservation")
 @SequenceGenerator(name = "seqReservation", sequenceName = "Reser_seq_id", initialValue = 1000, allocationSize = 1)
-@NamedQuery(query = "select r from Reservation r right join r.client c where c.id=:idR", name = "Reservation.findAllWithClientId")
+
 public class Reservation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqReservation")
