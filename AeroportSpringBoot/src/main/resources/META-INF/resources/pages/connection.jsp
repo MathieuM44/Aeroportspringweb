@@ -9,7 +9,7 @@
 <body>
 	<div>${param.error}</div>
 	<div>
-		<form action="/connection/success" method="post">
+		<form action="" method="post">
 			<table>
 				<tr>
 					<td>username:</td>
