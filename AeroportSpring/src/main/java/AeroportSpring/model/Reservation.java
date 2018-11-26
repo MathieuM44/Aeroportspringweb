@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -20,14 +21,14 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 @Table(name = "Reservation")
 @SequenceGenerator(name = "seqReservation", sequenceName = "Reser_seq_id", initialValue = 1000, allocationSize = 1)
-
+@NamedQuery(query = "select r from Reservation r right join r.client c where c.id=:idR", name = "Reservation.findAllWithClientId")
 public class Reservation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqReservation")
 	@Column(name = "id_reservation")
 	private Long id;
 	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern="yyyy-MM-dd")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "date_reservation", length = 400, nullable = false)
 	private Date date;
 	@Column(name = "numero_reservation", length = 400, nullable = false)
@@ -51,9 +52,6 @@ public class Reservation {
 	@JoinColumn(name = "client_id")
 	private Client client;
 
-
-
-
 	public Reservation(Date date, Integer numero) {
 		super();
 
@@ -61,14 +59,11 @@ public class Reservation {
 		this.numero = numero;
 
 	}
-	
-	
 
-	
 	public Long getId() {
 		return id;
 	}
-	
+
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -84,8 +79,6 @@ public class Reservation {
 	public Reservation() {
 
 	}
-
-	
 
 	public Date getDate() {
 		return date;
@@ -127,5 +120,4 @@ public class Reservation {
 		this.client = client;
 	}
 
-	
 }

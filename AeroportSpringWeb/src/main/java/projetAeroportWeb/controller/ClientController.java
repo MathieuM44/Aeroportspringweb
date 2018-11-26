@@ -49,9 +49,6 @@ public class ClientController {
 	}
 
 
-	
-	
-	
 	@GetMapping("/edit")
 	public ModelAndView edit(@RequestParam(name = "id", required = true) Long id) {
 		Client client = clientService.GetWithResa(id);
