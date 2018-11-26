@@ -22,6 +22,7 @@ public class VolController {
 	@Autowired
 	private VolRepository volRepository;
 
+	@GetMapping("")
 	public ModelAndView home() {
 		return new ModelAndView("redirect:/vol/");
 
