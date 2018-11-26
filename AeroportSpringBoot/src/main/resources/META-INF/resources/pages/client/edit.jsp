@@ -3,6 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 
 <!DOCTYPE html>
 <html>
@@ -61,42 +63,82 @@
 					</c:if>
 				</div>
 
-				<c:if test="${client.getClass().simpleName != 'ClientMoral'}">
+				<c:if test="${flag=='edit'}">
+					<sec:authorize access="hasRole('ROLE_ADMIN')">
+						<c:if test="${client.getClass().simpleName != 'ClientMoral'}">
+							<div class="form-group">
+								<form:label path="prenom">prenom</form:label>
+								<form:input path="prenom" cssClass="form-control" />
+								<form:errors path="prenom"></form:errors>
+							</div>
+						</c:if>
+
+						<div class="form-group">
+							<form:label path="nom">nom</form:label>
+							<form:input path="nom" cssClass="form-control" />
+							<form:errors path="nom"></form:errors>
+						</div>
+					</sec:authorize>
+					<sec:authorize access="hasRole('ROLE_USER')">
+						<div class="form-group">
+							<form:label path="prenom">prenom</form:label>
+							<form:input readonly="true" path="prenom" cssClass="form-control" />
+							<form:errors path="prenom"></form:errors>
+						</div>
+
+						<div class="form-group">
+							<form:label path="nom">nom</form:label>
+							<form:input readonly="true" path="nom" cssClass="form-control" />
+							<form:errors path="nom"></form:errors>
+						</div>
+
+					</sec:authorize>
+				</c:if>
+				<c:if test="${flag=='create'}">
+					<c:if test="${client.getClass().simpleName != 'ClientMoral'}">
+						<div class="form-group">
+							<form:label path="prenom">prenom</form:label>
+							<form:input path="prenom" cssClass="form-control" />
+							<form:errors path="prenom"></form:errors>
+						</div>
+					</c:if>
+
 					<div class="form-group">
-						<form:label path="prenom">prenom</form:label>
-						<form:input path="prenom" cssClass="form-control" />
-						<form:errors path="prenom"></form:errors>
+						<form:label path="nom">nom</form:label>
+						<form:input path="nom" cssClass="form-control" />
+						<form:errors path="nom"></form:errors>
 					</div>
 				</c:if>
-				
-				<div class="form-group">
-					<form:label path="nom">nom</form:label>
-					<form:input path="nom" cssClass="form-control" />
-					<form:errors path="nom"></form:errors>
-				</div>
-
-
-
+				<c:if test="${flag=='edit'}">
+					<c:if test="${client.getClass().simpleName != 'ClientMoral'}">
+						<div class="form-group">
+							<form:label path="prenom">prenom</form:label>
+							<form:input path="prenom" cssClass="form-control" />
+							<form:errors path="prenom"></form:errors>
+						</div>
+					</c:if>
+					<div class="form-group">
+						<form:label path="nom">nom</form:label>
+						<form:input path="nom" cssClass="form-control" />
+						<form:errors path="nom"></form:errors>
+					</div>
+				</c:if>
 
 				<div class="form-group">
 					<form:label path="adresse.adresse">adresse</form:label>
 					<form:input path="adresse.adresse" cssClass="form-control" />
 					<form:errors path="adresse.adresse"></form:errors>
 				</div>
-
-
 				<div class="form-group">
 					<form:label path="adresse.ville">ville</form:label>
 					<form:input path="adresse.ville" cssClass="form-control" />
 					<form:errors path="adresse.ville"></form:errors>
 				</div>
-
 				<div class="form-group">
 					<form:label path="adresse.pays">pays</form:label>
 					<form:input path="adresse.pays" cssClass="form-control" />
 					<form:errors path="adresse.pays"></form:errors>
 				</div>
-
 				<table class="table">
 					<tr>
 
@@ -117,7 +159,6 @@
 					</c:forEach>
 
 				</table>
-
 				<button class="btn btn-success" type="submit">enregistrer</button>
 				<a class="btn btn-danger" href="./"> annuler</a>
 			</form:form>

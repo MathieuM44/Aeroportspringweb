@@ -23,7 +23,7 @@
 					<li class="nav-item"><a class="nav-link" href="../client/">clients</a></li>
 					<li class="nav-item"><a class="nav-link"
 						href="../reservation/">reservations</a></li>
-					<c:if test="${pageContext.request.userPrincipal.name!=null }">
+					<c:if test="${pageContext.request.userPrincipal.name!=null}">
 						<li class="nav-item"><a class="nav-link" href="../logout">logout</a>
 						</li>
 						<li class="nav-item">logged as
