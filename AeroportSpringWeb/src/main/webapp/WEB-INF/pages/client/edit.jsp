@@ -118,6 +118,10 @@
 					</c:forEach>
 
 				</table>
+				
+								<a class="btn success" href="../reservation/${client.id}"> Voir reservation</a>
+				
+				
 
 				<button class="btn btn-success" type="submit">enregistrer</button>
 				<a class="btn btn-danger" href="./"> annuler</a>
