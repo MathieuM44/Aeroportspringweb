@@ -13,7 +13,7 @@ public class AuthController {
 
 	@GetMapping("")
 	public ModelAndView home() {
-		return new ModelAndView("redirect:/login/");
+		return new ModelAndView("redirect:/connection/");
 
 	}
 
@@ -22,8 +22,8 @@ public class AuthController {
 		return "connection";
 	}
 	
-	@PostMapping("/success")
-	public ModelAndView successfullLogin() {
-		return new ModelAndView("redirect:/login/");
-	}
+//	@PostMapping("/success")
+//	public ModelAndView successfullLogin() {
+//		return new ModelAndView("redirect:/login/");
+//	}
 }
