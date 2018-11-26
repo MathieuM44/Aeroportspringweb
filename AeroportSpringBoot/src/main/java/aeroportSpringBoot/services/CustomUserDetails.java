@@ -1,7 +1,7 @@
 package aeroportSpringBoot.services;
 
 import java.util.Collection;
-import java.util.Collections;
+import java.util.HashSet;
 import java.util.Set;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -22,7 +22,7 @@ public class CustomUserDetails implements UserDetails {
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		Set<String> roleList = Collections.emptySet();
+		Set<String> roleList = new HashSet<String>();
 		if (login.getAdmin()) {
 			roleList.add("ADMIN");
 		} else {
