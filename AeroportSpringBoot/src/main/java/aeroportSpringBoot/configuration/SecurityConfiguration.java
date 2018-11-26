@@ -23,13 +23,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	// definir les pages securisees
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/personne/").permitAll();// antMatchers défini les url sur lesquelles on
-		http.authorizeRequests().antMatchers("/personne/**").authenticated().and().formLogin().loginPage("/login")
-				.failureUrl("/login?error=erreur").permitAll().and().logout().permitAll()
-				.logoutSuccessUrl("/personne/"); // veut mettre une règle
-		http.authorizeRequests().antMatchers("/rest/**").authenticated().and().httpBasic();
-		http.csrf().disable();
-		http.headers().frameOptions().disable();
+		http.authorizeRequests().antMatchers("/**").permitAll();// antMatchers défini les url sur lesquelles on
+//		http.authorizeRequests().antMatchers("/personne/**").authenticated().and().formLogin().loginPage("/login")
+//				.failureUrl("/login?error=erreur").permitAll().and().logout().permitAll()
+//				.logoutSuccessUrl("/personne/"); // veut mettre une règle
+//		http.authorizeRequests().antMatchers("/rest/**").authenticated().and().httpBasic();
+//		http.csrf().disable();
+//		http.headers().frameOptions().disable();
 	}
 
 //	// definition de la methode d'authentification
