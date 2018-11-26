@@ -5,7 +5,10 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
+<<<<<<< HEAD
 
+=======
+>>>>>>> client
 
 <!DOCTYPE html>
 <html>
@@ -110,6 +113,20 @@
 						<form:errors path="nom"></form:errors>
 					</div>
 				</c:if>
+<<<<<<< HEAD
+=======
+
+				<c:if test="${flag=='edit'}">
+
+					<div class="form-group">
+						<form:label path="nom">nom</form:label>
+						<form:input path="nom" cssClass="form-control" />
+						<form:errors path="nom"></form:errors>
+					</div>
+				</c:if>
+
+
+>>>>>>> client
 
 				<div class="form-group">
 					<form:label path="adresse.adresse">adresse</form:label>
