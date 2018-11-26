@@ -2,6 +2,8 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,6 +34,9 @@
 				</ul>
 			</div>
 		</nav>
+		accessible à tous
+		<sec:authorize access="hasRole('ROLE_ADMIN')">accessible à l'admin</sec:authorize>
+		<sec:authorize access="hasRole('ROLE_USER')">accessible aux users</sec:authorize>
 		<table class="table">
 			<tr>
 				<th>id</th>
