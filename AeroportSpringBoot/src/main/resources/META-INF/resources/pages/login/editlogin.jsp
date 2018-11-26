@@ -16,7 +16,7 @@
 	<div class="container">
 		<fieldset>
 			<legend> edition de logins </legend>
-			<form:form action="./save" method="post" modelAttribute="login">
+			<form:form action="./save" method="get" modelAttribute="log">
 				<form:hidden path="version" />
 				<div class="form-group">
 					<form:label path="id">id</form:label>
