@@ -21,7 +21,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().antMatchers("/reservation/**").authenticated().and().formLogin().loginPage("/connection")
 				.failureUrl("/login?error=erreur").permitAll().and().logout().permitAll()
-				.logoutSuccessUrl("/vol/");
+				.logoutSuccessUrl("/reservation/");
 		http.authorizeRequests().antMatchers("/**").permitAll();
 		http.csrf().disable();
 		http.headers().frameOptions().disable();
