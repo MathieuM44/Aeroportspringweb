@@ -20,17 +20,15 @@ public class Login {
 	@Column(name = "id_login", length = 12)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqLogin")
 	private Long id;
-	@Column(name = "login_login", length = 100, unique=true)
+	@Column(name = "login_login", length = 100, unique = true)
 	private String login;
 	@Column(name = "mot_de_passe_login", length = 100)
 	private String motDePasse;
 	@Column(name = "admin_login", length = 4)
 	private Boolean admin;
-
 	// Association
 	@OneToOne(mappedBy = "login")
 	private Client client;
-
 	// Version
 	@Version
 	int version;
@@ -42,48 +40,50 @@ public class Login {
 		this.login = login;
 	}
 
+	// getters 
 	public Long getId() {
 		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public String getLogin() {
 		return login;
 	}
 
-	public void setLogin(String login) {
-		this.login = login;
-	}
-
 	public String getMotDePasse() {
 		return motDePasse;
-	}
-
-	public void setMotDePasse(String motDePasse) {
-		this.motDePasse = motDePasse;
 	}
 
 	public Boolean getAdmin() {
 		return admin;
 	}
 
-	public void setAdmin(Boolean admin) {
-		this.admin = admin;
-	}
-
 	public Client getClient() {
 		return client;
 	}
 
-	public void setClient(Client client) {
-		this.client = client;
-	}
-
 	public int getVersion() {
 		return version;
+	}
+
+	// setters
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
+	public void setMotDePasse(String motDePasse) {
+		this.motDePasse = motDePasse;
+	}
+
+	public void setAdmin(Boolean admin) {
+		this.admin = admin;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
 	}
 
 	public void setVersion(int version) {

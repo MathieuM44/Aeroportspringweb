@@ -16,11 +16,11 @@
 	<div class="container">
 		<fieldset>
 			<legend> edition de logins </legend>
-			<form:form action="./saveLogin" method="post" modelAttribute="login">
+			<form:form action="./save" method="post" modelAttribute="login">
 				<form:hidden path="version" />
 				<div class="form-group">
 					<form:label path="id">id</form:label>
-					<form:input path="id" readonly="true" cssClass="form-control" />
+					<form:input  path="id" readonly="true" cssClass="form-control" />
 				</div>
 				<div class="form-group">
 					<form:label path="login">login</form:label>
@@ -45,7 +45,7 @@
 				<%-- 					</form:select> --%>
 				<!-- 				</div> -->
 				<div class="form-group">
-					<button type="submit" class=" btnbtn-success">enregistrer</button>
+					<button type="submit" class=" btn btn-success">enregistrer</button>
 					<a class="btn btn-danger" href="./">annuler</a>
 				</div>
 			</form:form>
