@@ -1,4 +1,4 @@
-package AeroportSpring.model;
+package aeroportSpringBoot.model;
 
 import java.util.Date;
 
@@ -27,7 +27,7 @@ public class Reservation {
 	@Column(name = "id_reservation")
 	private Long id;
 	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern="yyyy-MM-dd")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "date_reservation", length = 400, nullable = false)
 	private Date date;
 	@Column(name = "numero_reservation", length = 400, nullable = false)
@@ -51,9 +51,6 @@ public class Reservation {
 	@JoinColumn(name = "client_id")
 	private Client client;
 
-
-
-
 	public Reservation(Date date, Integer numero) {
 		super();
 
@@ -61,14 +58,11 @@ public class Reservation {
 		this.numero = numero;
 
 	}
-	
-	
 
-	
 	public Long getId() {
 		return id;
 	}
-	
+
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -84,8 +78,6 @@ public class Reservation {
 	public Reservation() {
 
 	}
-
-	
 
 	public Date getDate() {
 		return date;
@@ -127,5 +119,4 @@ public class Reservation {
 		this.client = client;
 	}
 
-	
 }

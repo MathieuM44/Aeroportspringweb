@@ -1,4 +1,4 @@
-package AeroportSpring.services;
+package aeroportSpringBoot.services;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,17 +7,15 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import AeroportSpring.model.Adresse;
-import AeroportSpring.model.Client;
-import AeroportSpring.model.ClientEI;
-import AeroportSpring.model.ClientPhysique;
-import AeroportSpring.model.Login;
-import AeroportSpring.model.Passager;
-import AeroportSpring.model.Reservation;
-import AeroportSpring.model.TitrePhysique;
-import AeroportSpring.repositories.ClientRepository;
-import AeroportSpring.repositories.LoginRepository;
-import AeroportSpring.repositories.ReservationRepository;
+import aeroportSpringBoot.model.Adresse;
+import aeroportSpringBoot.model.Client;
+import aeroportSpringBoot.model.ClientPhysique;
+import aeroportSpringBoot.model.Login;
+import aeroportSpringBoot.model.Passager;
+import aeroportSpringBoot.model.Reservation;
+import aeroportSpringBoot.repositories.ClientRepository;
+import aeroportSpringBoot.repositories.LoginRepository;
+import aeroportSpringBoot.repositories.ReservationRepository;
 
 @Service
 public class ClientService {
@@ -68,7 +66,7 @@ public class ClientService {
 
 	public String numVolPrint(Long id) {
 		String s = "";
-		Client client = null;
+//		Client client = null;
 
 		if (this.clientExist(id)) {
 			List<Reservation> reservations = this.reservationGet(id);
