@@ -24,9 +24,10 @@ public class CustomUserDetails implements UserDetails {
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		Set<Role> roleList = new HashSet<Role>();
-		roleList.add(Role.ROLE_USER);
 		if (login.getAdmin()) {
 			roleList.add(Role.ROLE_ADMIN);
+		} else {
+			roleList.add(Role.ROLE_USER);
 		}
 		return AuthorityUtils
 				.commaSeparatedStringToAuthorityList(StringUtils.collectionToCommaDelimitedString(roleList));
