@@ -77,6 +77,11 @@ public class ClientController {
 
 	public ModelAndView goEdit(Client p) {
 		ModelAndView modelAndView = new ModelAndView("client/edit", "client", p);
+		if (p.getId() == null) {
+			modelAndView.addObject("flag", "create");
+		} else {
+			modelAndView.addObject("flag", "edit");
+		}
 		modelAndView.addObject("titresP", TitrePhysique.values());
 		modelAndView.addObject("titresM", TitreMoral.values());
 		modelAndView.addObject("reservationss", p.getReservations());
