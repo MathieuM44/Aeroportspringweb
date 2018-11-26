@@ -3,6 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 
 <!DOCTYPE html>
 <html>
@@ -68,13 +70,15 @@
 						<form:errors path="prenom"></form:errors>
 					</div>
 				</c:if>
-				
-				<div class="form-group">
-					<form:label path="nom">nom</form:label>
-					<form:input path="nom" cssClass="form-control" />
-					<form:errors path="nom"></form:errors>
-				</div>
 
+				<c:if test="${flag=='edit'}">
+
+					<div class="form-group">
+						<form:label path="nom">nom</form:label>
+						<form:input path="nom" cssClass="form-control" />
+						<form:errors path="nom"></form:errors>
+					</div>
+				</c:if>
 
 
 
