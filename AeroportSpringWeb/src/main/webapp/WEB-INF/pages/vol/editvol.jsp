@@ -20,26 +20,27 @@
 					<form:label path="id">id</form:label>
 					<form:input path="id" readonly="true" cssClass="form-control" />
 				</div>
-<!-- 				<div class="form-group"> -->
-<%-- 					<form:label path="datedepart">Date de depart</form:label> --%>
-<%-- 					<form:input path="datedepart" cssClass="form-control" /> --%>
-<%-- 					<form:errors path="datedepart">Date de depart</form:errors> --%>
-<!-- 				</div> -->
-<!-- 				<div class="form-group"> -->
-<%-- 					<form:label path="datearrivee">Date d'arrivee</form:label> --%>
-<%-- 					<form:input path="datearrivee" cssClass="form-control" /> --%>
-<%-- 					<form:errors path="datearrivee">Date d'arrivee</form:errors> --%>
-<!-- 				</div> -->
-<!-- 				<div class="form-group"> -->
-<%-- 					<form:label path="heuredepart">heure de depart</form:label> --%>
-<%-- 					<form:input type="heuredepart" path="heuredepart" cssClass="form-control" /> --%>
-<%-- 					<form:errors path="heuredepart"></form:errors> --%>
-<!-- 				</div> -->
-<!-- 				<div class="form-group"> -->
-<%-- 					<form:label path="heurearrivee">heure d'arrivee</form:label> --%>
-<%-- 					<form:input type="heurearrivee" path="heurearrivee" cssClass="form-control" /> --%>
-<%-- 					<form:errors path="heurearrivee"></form:errors> --%>
-<!-- 				</div> -->
+				<div class="form-group">
+					<form:label path="dateDepart">date de depart</form:label>
+					<form:input type="date" path="dateDepart" cssClass="form-control" />
+					<form:errors path="dateDepart"></form:errors>
+				</div>
+				
+				<div class="form-group">
+					<form:label path="dateArrivee">Date d'arrivee</form:label>
+					<form:input type="date" path="dateArrivee" cssClass="form-control" />
+					<form:errors path="dateArrivee"></form:errors>
+				</div>
+				<div class="form-group">
+					<form:label path="heureDepart">heure de depart</form:label>
+					<form:input type="time" path="heureDepart" cssClass="form-control" />
+					<form:errors path="heureDepart"></form:errors>
+				</div>
+				<div class="form-group">
+					<form:label path="heureArrivee">heure d'arrivee</form:label>
+					<form:input type="time" path="heureArrivee" cssClass="form-control" />
+					<form:errors path="heureArrivee"></form:errors>
+				</div>
 				<div>
 					<div class="form-group">
 						<button type="submit" class=" btnbtn-success">enregistrer</button>
