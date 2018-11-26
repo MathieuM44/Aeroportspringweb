@@ -28,8 +28,7 @@ public class CustomUserDetails implements UserDetails {
 		} else {
 			roleList.add("USER");
 		}
-		return AuthorityUtils
-				.commaSeparatedStringToAuthorityList(StringUtils.collectionToCommaDelimitedString(roleList));
+		return AuthorityUtils.commaSeparatedStringToAuthorityList(StringUtils.collectionToCommaDelimitedString(roleList));
 	}
 
 	@Override
