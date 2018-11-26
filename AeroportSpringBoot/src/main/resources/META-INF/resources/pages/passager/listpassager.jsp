@@ -1,22 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
+<title>Liste des passagers</title>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
 	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
 	crossorigin="anonymous">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<title>liste des logins</title>
 </head>
 <body>
 	<div class="container">
@@ -34,25 +28,32 @@
 		</nav>
 		<table class="table">
 			<tr>
-				<th>id</th>
-				<th>login</th>
-				<th>motDePasse</th>
-				<th>admin</th>
+				<th>Id</th>
+				<th>Nom</th>
+				<th>Prénom</th>
+				<th>Adresse</th>
+				<th>Code postal</th>
+				<th>Ville</th>
+				<th>Pays</th>
+				<th></th>
+				<th></th>
 			</tr>
-			<c:forEach var="login" items="${logins}">
+			<c:forEach var="passager" items="${passagers}">
 				<tr>
-					<td>${login.id }</td>
-					<td>${login.login }</td>
-					<td>${login.motDePasse }</td>
-					<td>${login.admin }</td>
-					<td><a class="btn btn-danger" href="./delete?id=${login.id}">supprimer</a></td>
-					<td><a class="btn btn-info" href="./editlogin?id=${login.id}">editer</a></td>
-					<td><a class="btn btn-info" href="./voirclient?id=${login.id}">voir
-							client</a></td>
+					<td>${passager.id}</td>
+					<td>${passager.nom}</td>
+					<td>${passager.prenom}</td>
+					<td>${passager.adresse.adresse}</td>
+					<td>${passager.adresse.codePostale}</td>
+					<td>${passager.adresse.ville}</td>
+					<td>${passager.adresse.pays}</td>
+					<td><a class="btn btn-danger"
+						href="./delete?id=${passager.id}">Supprimer</a></td>
+					<td><a class="btn btn-info" href="./edit?id=${passager.id}">Editer</a></td>
 				</tr>
 			</c:forEach>
 		</table>
-		<a class="btn btn-info" href="./addLogin"> nouveau login</a>
+		<a class="btn btn-info" href="./addPassager">Nouveau passager</a>
 	</div>
 </body>
 </html>
