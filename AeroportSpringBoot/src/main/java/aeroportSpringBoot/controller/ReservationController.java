@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -74,4 +75,13 @@ public class ReservationController {
 		reservationRepository.save(reservation);
 		return new ModelAndView("redirect:/reservation/");
 	}
+	
+	// Via la liste "Client" (accessible par la vue client)
+
+
+		@GetMapping("/{id}")
+		public ModelAndView listId(@PathVariable(name = "id") Long id) {
+			return new ModelAndView("reservation/listreservation", "reservations", reservationRepository.findAllWithClientId(id));
+			
+		}
 }
