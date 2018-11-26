@@ -9,11 +9,13 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import aeroportSpringBoot.services.CustomUserDetailService;
+
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Autowired
-	private CustomUserDetailsService userDetailsService;
+	private CustomUserDetailService userDetailsService;
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
