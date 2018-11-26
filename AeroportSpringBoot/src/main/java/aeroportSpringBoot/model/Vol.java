@@ -1,4 +1,4 @@
-package AeroportSpring.model;
+package aeroportSpringBoot.model;
 
 import java.util.Date;
 import java.util.List;
@@ -26,71 +26,62 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Table(name = "Vol")
 @SequenceGenerator(name = "seqVol", sequenceName = "seq_vols", initialValue = 1, allocationSize = 1)
 @NamedQueries({
-	@NamedQuery(name = "Vol.findAllEscale" , 
-			query = "select distinct v from Vol v left join fetch v.escale"),
-	@NamedQuery(name = "Vol.findAllReservation" , 
-			query = "select distinct v from Vol v left join fetch v.reservations"),
-	@NamedQuery(name = "Vol.findAllCompagnieAerienneVol" , 
-			query = "select distinct v from Vol v left join fetch v.compagnieAerienneVol"),
-	@NamedQuery(name = "Vol.findAllCompagnieAerienne", 
-		query = "select distinct v from Vol v left join fetch v.compagnieAerienneVol cav left join fetch cav.key.compagnieAerienne"),
-	@NamedQuery(name = "Vol.findAllEscaleById" , 
-		query = "select distinct v from Vol v left join fetch v.escale where v.id=:id"),
-	@NamedQuery(name = "Vol.findAllReservationById" , 
-		query = "select distinct v from Vol v left join fetch v.reservations where v.id=:id"),
-	@NamedQuery(name = "Vol.findAllCompagnieAerienneVolById" , 
-		query = "select distinct v from Vol v left join fetch v.compagnieAerienneVol where v.id=:id"),
-	@NamedQuery(name = "Vol.findAllCompagnieAerienneById", 
-		query = "select distinct v from Vol v left join fetch v.compagnieAerienneVol cav left join fetch cav.key.compagnieAerienne "
-				+ "where v.id=:id")
-})
+		@NamedQuery(name = "Vol.findAllEscale", query = "select distinct v from Vol v left join fetch v.escale"),
+		@NamedQuery(name = "Vol.findAllReservation", query = "select distinct v from Vol v left join fetch v.reservations"),
+		@NamedQuery(name = "Vol.findAllCompagnieAerienneVol", query = "select distinct v from Vol v left join fetch v.compagnieAerienneVol"),
+		@NamedQuery(name = "Vol.findAllCompagnieAerienne", query = "select distinct v from Vol v left join fetch v.compagnieAerienneVol cav left join fetch cav.key.compagnieAerienne"),
+		@NamedQuery(name = "Vol.findAllEscaleById", query = "select distinct v from Vol v left join fetch v.escale where v.id=:id"),
+		@NamedQuery(name = "Vol.findAllReservationById", query = "select distinct v from Vol v left join fetch v.reservations where v.id=:id"),
+		@NamedQuery(name = "Vol.findAllCompagnieAerienneVolById", query = "select distinct v from Vol v left join fetch v.compagnieAerienneVol where v.id=:id"),
+		@NamedQuery(name = "Vol.findAllCompagnieAerienneById", query = "select distinct v from Vol v left join fetch v.compagnieAerienneVol cav left join fetch cav.key.compagnieAerienne "
+				+ "where v.id=:id") })
 public class Vol {
 
 	@Id
 	@Column(name = "id_vol", length = 10)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqVol")
 	private Long id;
-	
+
 	@Column(name = "date_depart_vol")
 	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern="yyyy-MM-dd")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date dateDepart;
-	
+
 	@Column(name = "date_arrivee_vol")
 	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern="yyyy-MM-dd")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date dateArrivee;
-	
+
 	@Column(name = "heure_depart_vol")
 	@Temporal(TemporalType.TIME)
-	@DateTimeFormat(pattern="HH:mm")
+	@DateTimeFormat(pattern = "HH:mm")
 	private Date heureDepart;
-	
+
 	@Column(name = "heure_arrivee_vol")
 	@Temporal(TemporalType.TIME)
-	@DateTimeFormat(pattern="HH:mm")
+	@DateTimeFormat(pattern = "HH:mm")
 	private Date heureArrivee;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "aeroport_depart_id")
 	private Aeroport aeroportDepart;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "aeroport_arrivee_id")
 	private Aeroport aeroportArrivee;
-	
-	@OneToMany(mappedBy = "key.vol")		// erreur � ignorer si cl� compos�e
+
+	@OneToMany(mappedBy = "key.vol") // erreur ï¿½ ignorer si clï¿½ composï¿½e
 	private Set<CompagnieAerienneVol> compagnieAerienneVol;
-	
-	@OneToMany(mappedBy = "key.vol")		// erreur � ignorer si cl� compos�e
+
+	@OneToMany(mappedBy = "key.vol") // erreur ï¿½ ignorer si clï¿½ composï¿½e
 	private Set<Escale> escale;
-	
+
 	@OneToMany(mappedBy = "vol")
 	private List<Reservation> reservations;
-	
+
 	@Version
 	private int version;
-	
+
 	public Vol() {
 	}
 
@@ -206,5 +197,5 @@ public class Vol {
 			return false;
 		return true;
 	}
-	
+
 }

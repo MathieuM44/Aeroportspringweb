@@ -49,8 +49,7 @@
 
 					<td><fmt:formatDate value="${vol.dateArrivee}"
 							pattern="dd/MM/yyyy" /></td>
-					<td><fmt:formatDate value="${vol.heureDepart}"
-							pattern="HH:mm" /></td>
+					<td><fmt:formatDate value="${vol.heureDepart}" pattern="HH:mm" /></td>
 					<td><fmt:formatDate value="${vol.heureArrivee}"
 							pattern="HH:mm" /></td>
 
