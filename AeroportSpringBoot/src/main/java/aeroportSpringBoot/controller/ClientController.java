@@ -32,13 +32,17 @@ public class ClientController {
 
 	@GetMapping("")
 	public ModelAndView home() {
+		System.out.println("en position 1");
 		ModelAndView modelAndView = new ModelAndView("redirect:/client/");
+		System.out.println("en position 2");
 		return modelAndView;
 	}
 
 	@GetMapping("/")
 	public ModelAndView list() {
+		System.out.println("en position 3");
 		ModelAndView modelAndView = new ModelAndView("client/list", "clients", clientRepo.findAll());
+		System.out.println("en position 4");
 		return modelAndView;
 	}
 
