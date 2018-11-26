@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.util.StringUtils;
 
 import aeroportSpringBoot.model.Login;
+import aeroportSpringBoot.model.Role;
 
 @SuppressWarnings("serial")
 public class CustomUserDetails implements UserDetails {
@@ -22,11 +23,10 @@ public class CustomUserDetails implements UserDetails {
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		Set<String> roleList = new HashSet<String>();
+		Set<Role> roleList = new HashSet<Role>();
+		roleList.add(Role.ROLE_USER);
 		if (login.getAdmin()) {
-			roleList.add("ADMIN");
-		} else {
-			roleList.add("USER");
+			roleList.add(Role.ROLE_ADMIN);
 		}
 		return AuthorityUtils
 				.commaSeparatedStringToAuthorityList(StringUtils.collectionToCommaDelimitedString(roleList));

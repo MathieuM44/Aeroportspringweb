@@ -65,11 +65,7 @@ public class LoginController {
 	
 	@GetMapping("/save")
 	private ModelAndView save(@Valid @ModelAttribute("log")Login login, BindingResult br) {
-		System.out.println("mark 1");
 		if (br.hasErrors()) {
-			for (ObjectError error :br.getAllErrors()) {
-				System.out.println(error.getDefaultMessage());
-			}
 			return goEdit(login);
 		}
 		else {
