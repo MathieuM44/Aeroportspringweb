@@ -67,12 +67,24 @@
 								<form:input path="motDePasse" cssClass=" form-control" />
 								<form:errors path="motDePasse">motDePasse</form:errors>
 							</div>
-							<div class="form-group">
-								<form:label path="admin">admin</form:label>
-								<form:input path="admin" readonly="true"
-									cssClass=" form-control" />
-								<form:errors path="admin"></form:errors>
-							</div>
+							<c:choose>
+								<c:when test="${admin==null}">
+									<div class="form-group">
+										<form:label path="admin">admin</form:label>
+										<form:input path="admin" readonly="false"
+											cssClass=" form-control" />
+										<form:errors path="admin"></form:errors>
+									</div>
+								</c:when>
+								<c:otherwise>
+									<div class="form-group">
+										<form:label path="admin">admin</form:label>
+										<form:input path="admin" readonly="true"
+											cssClass=" form-control" />
+										<form:errors path="admin"></form:errors>
+									</div>
+								</c:otherwise>
+							</c:choose>
 							<div class="form-group">
 								<button type="submit" class=" btnbtn-success">enregistrer</button>
 								<a class="btn btn-danger" href="./">annuler</a>
