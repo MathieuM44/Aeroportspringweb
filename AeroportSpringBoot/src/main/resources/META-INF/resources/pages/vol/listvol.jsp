@@ -2,6 +2,8 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,10 +25,48 @@
 					<li class="nav-item"><a class="nav-link" href="../client/">clients</a></li>
 					<li class="nav-item"><a class="nav-link"
 						href="../reservation/">reservations</a></li>
+					<c:if test="${pageContext.request.userPrincipal.name!=null }">
+						<li class="nav-item"><a class="nav-link" href="../logout">logout</a>
+						</li>
+						<li class="nav-item">logged as
+							${pageContext.request.userPrincipal.name}</li>
+					</c:if>
 				</ul>
 			</div>
 		</nav>
 		<table class="table">
+
+
+			<sec:authorize access="hasRole('ROLE_ADMIN')">
+				<tr>
+					<th>id</th>
+					<th>date de depart</th>
+					<th>date d'arrivee</th>
+					<th>Heure de Depart</th>
+					<th>Heure d'Arrivee</th>
+
+				</tr>
+				<c:forEach var="vol" items="${vols}">
+					<tr>
+						<td>${vol.id}</td>
+						<td><fmt:formatDate value="${vol.dateDepart}"
+								pattern="dd/MM/yyyy" /></td>
+
+						<td><fmt:formatDate value="${vol.dateArrivee}"
+								pattern="dd/MM/yyyy" /></td>
+						<td><fmt:formatDate value="${vol.heureDepart}"
+								pattern="HH:mm" /></td>
+						<td><fmt:formatDate value="${vol.heureArrivee}"
+								pattern="HH:mm" /></td>
+
+						<td><a class="btn btn-danger" href="./delete?id=${vol.id}">supprimer</a></td>
+						<td><a class="btn btn-info" href="./editvol?id=${vol.id}">editer</a></td>
+				</c:forEach>
+		</table>
+		<a class="btn btn-info" href="./addvol"> nouveau vol</a>
+		</sec:authorize>
+
+		<sec:authorize access="hasRole('ROLE_USERS')">
 			<tr>
 				<th>id</th>
 				<th>date de depart</th>
@@ -46,12 +86,14 @@
 					<td><fmt:formatDate value="${vol.heureDepart}" pattern="HH:mm" /></td>
 					<td><fmt:formatDate value="${vol.heureArrivee}"
 							pattern="HH:mm" /></td>
-
-					<td><a class="btn btn-danger" href="./delete?id=${vol.id}">supprimer</a></td>
-					<td><a class="btn btn-info" href="./editvol?id=${vol.id}">editer</a></td>
 			</c:forEach>
-		</table>
-		<a class="btn btn-info" href="./addvol"> nouveau vol</a>
+			</table>
+
+		</sec:authorize>
+
+
+
 	</div>
+
 </body>
 </html>
