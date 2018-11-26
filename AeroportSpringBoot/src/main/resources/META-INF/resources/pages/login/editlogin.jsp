@@ -20,7 +20,7 @@
 			<legend> edition de logins </legend>
 			<div>
 				<div>
-					<a sec:authorize access="hasRole('ROLE_ADMIN')">
+					<sec:authorize access="hasRole('ROLE_ADMIN')">
 						<form:form action="./save" method="get" modelAttribute="log">
 							<form:hidden path="version" />
 							<div class="form-group">
@@ -47,10 +47,10 @@
 								<a class="btn btn-danger" href="./">annuler</a>
 							</div>
 						</form:form>
-					</a>
+					</sec:authorize>
 				</div>
 				<div>
-					<a sec:authorize access="hasRole('ROLE_USER')">
+					<sec:authorize access="hasRole('ROLE_USER')">
 						<form:form action="./save" method="get" modelAttribute="log">
 							<form:hidden path="version" />
 							<div class="form-group">
@@ -78,7 +78,7 @@
 								<a class="btn btn-danger" href="./">annuler</a>
 							</div>
 						</form:form>
-					</a>
+					</sec:authorize>
 				</div>
 			</div>
 
